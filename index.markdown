@@ -19,4 +19,6 @@ parts of linear algebra and group theory. My work in formalisation has resulted 
 In Proceedings of the 12th ACM SIGPLAN International Conference on Certified Programs and Proofs.
 
 Here is a picture of me punting in Cambridge:
-![Punting in Cambridge](docs/assets/punting-resized.jpg)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/JasonKYi/JasonKYi.github.io/main/docs/assets/punting-resized.jpg" />
+</p>
