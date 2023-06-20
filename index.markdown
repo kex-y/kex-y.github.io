@@ -20,5 +20,5 @@ In Proceedings of the 12th ACM SIGPLAN International Conference on Certified Pro
 
 Here is a picture of me punting in Cambridge:
 <p align="center">
-  <img src="https://raw.githubusercontent.com/JasonKYi/JasonKYi.github.io/main/docs/assets/punting-resized.jpg" />
+  <img src="https://raw.githubusercontent.com/JasonKYi/JasonKYi.github.io/main/docs/assets/punting.jpg" width="500"/>
 </p>
