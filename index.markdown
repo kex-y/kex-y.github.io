@@ -18,3 +18,5 @@ parts of linear algebra and group theory. My work in formalisation has resulted 
 [A Formalization of Doob’s Martingale Convergence Theorems in mathlib](https://arxiv.org/abs/2212.05578), 
 In Proceedings of the 12th ACM SIGPLAN International Conference on Certified Programs and Proofs.
 
+Here is a picture of me punting in Cambridge:
+![Punting in Cambridge](_site/assets/punting.jpg)
