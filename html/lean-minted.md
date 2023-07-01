@@ -4,7 +4,6 @@ title: "Lean in LaTeX with minted"
 permalink: /lean-minted
 ---
 
-<!DOCTYPE html> 
 <html lang='en-US' xml:lang='en-US'> 
 <head><title>Lean in LaTeX with minted</title> 
 <meta charset='utf-8' /> 
@@ -13,19 +12,10 @@ permalink: /lean-minted
 <link href='main.css' rel='stylesheet' type='text/css' /> 
 <meta content='main.tex' name='src' /> 
 </head><body>
-<div class='maketitle'>
-                                                                            
-
-                                                                            
-                                                                            
-
-                                                                            
+<div class='maketitle'>                                                            
 
 <h2 class='titleHead'>Lean in LaTeX with
 <span id='textcolor1'><code class='minted-inline'>minted<!--  --></code></span></h2>
-<div class='author'><span class='ec-lmr-12'>Kexing Ying</span></div>
-<br />
-<div class='date'><span class='ec-lmr-12'>July 1, 2023</span></div>
 </div>
 <!-- l. 37 --><p class='noindent'>In this short article I will describe how to include Lean snippets in your LaTeX document by using the
 <code class='minted-inline'>minted<!--  --></code> package. The simplest
