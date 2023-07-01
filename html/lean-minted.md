@@ -6,11 +6,10 @@ permalink: /lean-minted
 
 <html lang='en-US' xml:lang='en-US'> 
 <head><title>Lean in LaTeX with minted</title> 
-<meta charset='utf-8' /> 
+<!-- <meta charset='utf-8' /> 
 <meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
 <meta content='width=device-width,initial-scale=1' name='viewport' /> 
-<link href='main.css' rel='stylesheet' type='text/css' /> 
-<meta content='main.tex' name='src' /> 
+<link href='main.css' rel='stylesheet' type='text/css' />  -->
 </head><body>
 <div class='maketitle'>                                                            
 
