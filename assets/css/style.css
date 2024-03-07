@@ -47,6 +47,10 @@
     text-indent: 20px
 }
 
+.spacer {
+    height: 200px;
+}
+
 .Margins{
     padding-left: 21%;
     width: 58%;
@@ -66,13 +70,28 @@
     margin-bottom: 20px;
 }
 
-
 .SubSection{
     font-family: CMB;
     font-size: 29px;
     text-align: Left;
     margin-top: 13px;
     margin-bottom: 20px;
+}
+
+.Contents{
+    font-family: CMB;
+    font-size: 22px;
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.ContentsRight{
+    font-family: CMB;
+    font-size: 22px;
+    float: right;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
 .BodyText{
