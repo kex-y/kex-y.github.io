@@ -1,0 +1,1 @@
+# Deployed using [Latex Jekyll](https://github.com/Hammie217/LatexJekyll)

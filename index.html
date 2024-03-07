@@ -1,0 +1,305 @@
+---
+layout: default
+title: Kexing Ying's website
+author: Kexing Ying
+date: March 2024
+abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kexing.ying/?lang=en">Kexing Ying</a> - 
+    a PhD student under the supervision of Prof. Xue-Mei Li within the chair of 
+    <a href="https://www.epfl.ch/labs/stoan/">Stochastic Analysis</a> at EPFL. I am also active in the 
+    formalisation of mathematics (mostly within probability theory) using the 
+    <a href="https://github.com/leanprover-community/mathlib"> Lean theorem prover</a>.
+    
+    I will post about maths and maybe some other stuff I find interesting. 
+---
+<p class="Section"><i>3 Mar. 2024</i> &ensp; Precompactness in the Total Variational Topology</p>
+    
+    <p class="BodyText">
+        Let \(X\) be a Polish space and let \(d\) be a metric compatible with the topology of \(X\). By replacing 
+        \(d\) by \(d \wedge 1\), we may assume that \(d \le 1\). Denoting \(\mathcal{M}(X)\) the space of 
+        probability measures on \(X\), we saw that for a sequence of measures 
+        \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\), we have that 
+        \begin{equation}\label{eq:wasserstein-weak}
+        d_1(\mu_n, \mu) \to 0 \iff \mu_n \rightharpoonup \mu.
+        \end{equation}
+        where \(d_1\) denotes the Wasserstein distance of order 1 corresponding to the metric \(d\) and 
+        \(\rightharpoonup\) denotes weak convergence. In this note we remark a similar condition for convergence 
+        in total variation. 
+    </p>
+
+    <p class="BodyText">
+        Recall that Lusin's theorem for Radon measures states that: Let \(X\) be a locally compact Polish space 
+        and take \(\mu \in \mathcal{M}(X)\) (so \(\mu\) is automatically a Radon measure), \(f : X \to \mathbb{R}\) 
+        a bounded measurable function and \(\epsilon > 0\). Then, there exists a compact set \(K \subseteq X\) 
+        such that \(f\) is continuous on \(K\) and \(\mu(K) \ge 1 - \epsilon\). This motivates the following definition.
+    </p>
+
+    <p class="BodyText">
+        <b>Definition.</b>
+        Given a set of measures \(M \subseteq \mathcal{M}(X)\), we say that \(M\) is strongly tight if for all 
+        \(f : X \to \mathbb{R}\) bounded measurable and \(\epsilon > 0\), there exists a compact set \(K \subseteq X\)
+        such that \(f\) is continuous on \(K\) and for all \(\mu \in M\), \(\mu(K) \ge 1 - \epsilon\).
+    </p>
+
+    <p class="BodyText">
+        We remark that, by applying Lusin's theorem to \(\epsilon / n\), it is clear that any finite family of measures 
+        is automatically strongly tight. Moreover, we see that if \(\mu_n \to \mu\) in total variation, then 
+        \(\{\mu_n, \mu\}_n\) is also strongly tight. Finally, as the name suggests, it is clear that if 
+        \(M \subseteq \mathcal{M}(X)\) is strongly tight, then it is also tight.
+    </p>
+
+    <p class="BodyText">
+        By slightly modifying the proof of convergence in Wasserstein distance implies weak convergence, we observe the following 
+        relation between convergence in Wasserstein distance and convergence in total variation.
+    </p>
+
+    <p class="BodyText">
+        <i>Proposition.</i>
+        Let \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\). 
+        Then, \(\mu_n \to \mu\) in total variation if and only if \((\mu_n)_n\) is strongly tight and \(d_1(\mu_n, \mu) \to 0\).
+    </p>
+
+    <p class="BodyText">
+        <i>Proof.</i>
+        The forward direction is obvious so we only prove the reverse. Suppose that \((\mu_n)_n\) is strongly tight 
+        and \(d_1(\mu_n, \mu) \to 0\). Then, taking \(f : X \to \mathbb{R}\) be a bounded measurable function, 
+        we will show that
+        \[\left|\int f d \mu_n - \int f d \mu\right| \to 0.\]
+        Fixing \(\epsilon > 0\), by strong tightness, there exists some \(K\) compact such that \(f\) is uniformly continuous on \(K\) and 
+        \(\mu(K^c), \mu_n(K^c) < \epsilon\) for all \(n\). Thus, there exists some \(\delta > 0\) such that 
+        for all \(x, y \in \Delta_\delta := \{(x, y) \in K^2 : d(x, y) < \delta\}\), we have \(|f(x) - f(y)| < \epsilon\).
+    </p>
+    
+    <p class="BodyText">
+        Moreover, since \(d_1(\mu_n, \mu) \to 0\), there exists a sequence of couplings 
+        \(\Pi_n \in \mathcal{C}(\mu_n, \mu)\) such that 
+        \[\int d(x, y) \Pi_n(d x, d y) \to 0.\]
+        So, 
+        \[0 \leftarrow \int d(x, y) \Pi_n(d x, d y) \ge \int_{\Delta_\delta^c \cap K^2} d(x, y) \Pi_n(d x, d y) 
+            \ge \delta \Pi_n(\Delta_\delta^c \cap K^2) \ge 0\]
+        implying \(\Pi_n(\Delta_\delta^c \cap K^2) < \epsilon\) for sufficiently large \(n\). Thus, for sufficiently large \(n\),
+        we have that 
+        \begin{align*}
+            \left|\int f d \mu_n - \int f d \mu\right| 
+            & = \left|\int (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
+            & \le \left|\int_{\Delta_\delta} (f(x) - f(y)) \Pi_n(d x, d y)\right| 
+            + \left|\int_{\Delta_\delta^c \cap K^2} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
+            & + \left|\int_{X \times K^c} (f(x) - f(y)) \Pi_n(d x, d y)\right| + 
+            \left|\int_{K^c \times X} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
+            & \le \epsilon + 2|f|_\infty \epsilon + 2|f|_\infty \mu_n(X)\mu(K^c) + 2|f|_\infty \mu_n(K^c)\mu(K)\\
+            & \le \epsilon(1 + 6|f|_\infty).
+        \end{align*}
+    </p>
+
+    <p class="BodyText">
+        Consequently, taking \(\epsilon \to 0\) gives the desired limit.
+    </p>
+
+    <p class="BodyText" style="text-align: right">🎉</p>
+
+    <p class="BodyText">
+        Alternatively, one can also obtain the above by using the equivalence of weak convergence and convergence 
+        is Wasserstein distance. In particular, 
+        we note that for a given bounded measurable function \(f : X \to \mathbb{R}\) and \(\mu \in \mathcal{M}(X)\), 
+        there exists a continuous function \(\tilde f : X \to \mathbb{R}\) such that 
+        \[\left| \int f d \mu - \int \tilde f d \mu \right| < \epsilon.\] 
+        This follows by Lusin's theorem and Tietze extension. Hence, in a similar vein, in the case where we have 
+        strong tightness, applying Tietze extension and triangle inequality provides convergence in total variation 
+        given weak convergence.
+    </p>
+
+    <p class="BodyText">
+        In any case, this provides a characterization of precompactness in the total variational topology.
+    </p>
+
+    <p class="BodyText">
+        <i>Proposition.</i>
+        Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Then \(M\) is strongly tight if and only if it is
+        precompact in the total variational topology.
+    </p>
+
+    <p class="BodyText">
+        <i>Proof.</i>
+        The forward direction is simple. Indeed, if \(M\) is strongly tight, then it is tight and so any sequence 
+        of measures \((\mu_n)\) in \(M\) has a weakly convergent subsequence \(\mu_{n_k} \to \mu \in \mathcal{M}(X)\). 
+        However, as \((\mu_{n_k})\) is also strongly tight, the previous lemma show that this convergence 
+        can be taking to be instead convergence in total variation. Thus, any sequence in \(M\) has a convergent
+        subsequence in total variation which implies that \(M\) is precompact.
+
+        TODO: converse direction
+    </p>
+
+    <p class="BodyText" style="text-align: right">🎉</p>
+    
+
+<p class="Section">
+    <i>27 Oct. 2023</i> &ensp; Random Compact Sets in Polish Spaces</p>
+
+    <p class="BodyText">
+        Here is a fun puzzle I thought about today:
+        Let \(X\) be a polish space and \(K\) a random compact set of \(X\) (i.e. a random variable taking values 
+        in compact subsets of \(X\)). Fix \(\epsilon > 0\), does there necessarily exists a deterministic compact 
+        set \(A\) such that \(\mathbb{P}(K \subseteq A) \ge 1 - \epsilon\)?
+    </p>
+
+    <p class="BodyText">
+        This question seems quite similar to the notion of <i>tightness</i> for measures and it would not 
+        come as a shock that the solution to this question uses tightness of a single measure on Polish spaces.
+    </p>
+
+    <p class="BodyText">
+        Define \(\mu\) such that
+        \[\mu(B) = \mathbb{P}(K \subsetneq B),\]
+        it is not difficult to see that \(\mu\) defines a measure on \(\mathcal{B}(X)\) (note that strict subset 
+        is necessary as \(K\) might achieve \(\varnothing\) with positive probability).
+        Thus, as a measure on \(X\) is tight, there exists a compact set \(A\) such that 
+        \[\mathbb{P}(K \subseteq A) \ge \mathbb{P}(K \subsetneq A) = \mu(A) \ge 1 - \epsilon\]
+        which is precisely what we needed.
+    </p>
+
+<p class="Section">
+    <i>30 Jul. 2022</i> &ensp; Order Connected Sets are Measurable in \(\mathbb{R}^n\)</p>
+
+    <p class="BodyText">
+        Yaël Dillies was reading a book by Bollobas in which he claimed without proof that an order connected set (with respect to the pointwise ordering) 
+        in \(\mathbb{R}^n\) is measurable. Yaël asked on Discord if anyone knows how to prove it. This short note contains my proof of this fact.
+    </p>
+
+    <p class="BodyText">
+        <b>Definition.</b>
+        Given a partially ordered set \((X, (\le))\), \(S \subseteq X\) is said to be order connected if for all \(x, y \in S\), 
+        \[[x, y] := \{z \mid x \le z \le y\} \subseteq S.\]
+    </p>   
+
+    <p class="BodyText">
+        Equipping \(\mathbb{R}^n\) with the point-wise ordering (i.e. for 
+        \(x := (x_i)_{i = 1}^n,  y := (y_i)_{i = 1}^n \in \mathbb{R}^n\), \(x \le y\) if and only if 
+        \(x_n \le y_n\) for all \(n = 1, \cdots, n\)), \(\mathbb{R}^n\) form a partially ordered set and we 
+        can therefore talk about its order connected subsets.
+    </p>
+
+    <p class="BodyText">
+        <b>Theorem.</b>
+        \(S \subseteq \mathbb{R}^n\) is Lebesgue measurable if \(S\) is order connected with respect to the 
+        point-wise ordering on \(\mathbb{R}^n\).
+    </p>
+    
+    <p class="BodyText">
+        <i>Proof.</i>
+        Defining \(S^+ := \{x \mid \exists \ y \in S, y \le x\}\) and \(S^- := \{x \mid \exists \ y \in s, x \le y\}\), we 
+        observe \(S = S^+ \cap S^-\). Therefore, it is sufficient to show that \(S^+\) and \(S^-\) are measurable. 
+        We will show measurability for \(S^+\) while the case for \(S^-\) is similar. 
+    </p>
+
+    <p class="BodyText">
+        It is clear that for all \(x \in \mathbb{R}^n\), \(\{x\}^+\) is measurable. So, defining \(Q := S^+ \cap \mathbb{Q}^n\),
+        \[Q^+ = \bigcup_{q \in Q} \{q\}^+ \subseteq S^+\]
+        is measurable. Furthermore, \(S^+ \setminus Q^+ \subseteq \partial S^+\) since for all \(x \in S^\circ\), there exists some 
+        open neighborhood \(B \subseteq S^\circ\) of \(x\); so, as \(Q\) is dense in \(S^+\), there exists an element 
+        \(q \in Q \cap B\) such that \(q \le x\) and hence, \(x \in \{q\}^+ \subseteq Q^+\). Now, as the Lebesgue \(\sigma\)-algebra is 
+        complete and \(S^+ = Q^+ \cup (S^+ \setminus Q^+)\), it suffices to show that \(\partial S^+\) is a null-set.
+    </p>
+
+    <p class="BodyText">
+        To show \(\text{Leb}(\partial S^+) = 0\) we will invoke the Lebesgue density theorem. Namely, by showing 
+        \[\partial S^+ \subseteq \{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}\]
+        where 
+        \[d(x) := \lim_{\epsilon \to 0} d_\epsilon(x) = \lim_{\epsilon \to 0} 
+            \frac{\text{Leb}(\overline{S^+} \cap B_\epsilon(x))}{\text{Leb}(B_\epsilon(x))}\]
+        as \(\overline{S^+}\) is closed and hence measurable, the Lebesgue density theorem tells us 
+        \[\text{Leb}(\partial S^+) \le \text{Leb}(\{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}) = 0.\]
+    </p>
+
+    <p class="BodyText">
+        Indeed, for all \(x \in \partial S^+, \epsilon > 0\), \(\overline{S^+} \cap B_\epsilon(x)\) must contain 
+        the with the right-upper quadrant of the ball by the very definition of \(S^+\), implying 
+        \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \gtrapprox 2^{-n} \text{Leb}(B_\epsilon(x))\) bounding 
+        \(d(x)\) from below. Similarly, \(\overline{S^+}^c \cap B_\epsilon(x)\) must contain the left-bottom 
+        quadrant of the ball as otherwise \(x\) is contained by some \(\{y\}^+\) for some \(y \in \overline{S}^+\) 
+        contradicting \(x \in \partial S^+\). Hence, \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \lessapprox 
+        (1 - 2^{-n}) \text{Leb}(B_\epsilon(x))\) bounding \(d(x)\) from above and so, proving the required 
+        inclusion.
+    </p>
+    
+    <p class="BodyText" style="text-align: right">🎉</p>
+
+<p class="Section">
+    <i>3 Apr. 2022</i> &ensp; Preorder Cannot Generate the Cofinite Topology on Infinite Sets</p>
+
+    <p class="BodyText">
+        Kevin Buzzard asked on Discord whether or not 
+        the topology generated by any preorder on \(\mathbb{C}\) can equal to either the usual topology or the cofinite topology.
+        The first question is rather easy to one can take the base of the usual topology to be the boxes and of which
+        is generated by the preorder 
+        \[z < w \iff \text{Re}(z) < \text{Re}(w) \text{ and } \text{Im}(z) < \text{Im}(w).\]
+        The second part is a bit more tricky and it turns out that the following theorem is true:
+    </p>
+
+    <p class="BodyText">
+        <b>Theorem.</b> 
+        Given a infinite set \(X\), there does not exist a preorder on \(X\) which generates the cofinite topology.
+    </p>
+
+    <p class="BodyText">
+        We will in this short article provide a proof for this theorem.
+        For reference, let us first quickly recall some basic definitions from lattice theory.
+    </p>
+
+    <p class="BodyText">
+        <b>Definition.</b> 
+        For a given set \(X\), a preorder \((\le)\) on \(X\) is a binary relation such that 
+        it is reflexive: for all \(x \in X\), \(x \le x\); and
+        it is transitive: for all \(x, y, z \in X\), if \(x \le y\) and \(y \le z\), then \(x \le z\).
+    </p>
+
+    <p class="BodyText">
+        <b>Definition.</b>
+        For a given set \(X\), a strict order \((<)\) on \(X\) is a binary relation such that 
+        it is irreflexive: for all \(x < X\), \(\neg x < x\); and 
+        it is transitive: for all \(x, y, z \in X\), if \(x \le y\) and \(y \le z\), then \(x \le z\).
+    </p>
+
+    <p class="BodyText">
+        It is clear that every preorder has an associated strict order by setting \(x < y\) whenever \(x \le y\) and \(\neg y \le x\).
+        With this in mind, the topology generated the preorder \((\le)\) is defined to be is the smallest topology such that all sets of the 
+        form \(\{y \in X \mid y < x\}\) and \(\{y \in X \mid x < y\}\) are open for any \(x \in X\) where \((<)\) is the strict 
+        order associated with the preorder. 
+    </p>
+
+    <p class="BodyText">
+        On the other hand, the cofinite topology on \(X\) is the topology in which the open sets are precisely 
+        the sets whose complements are finite or the empty set.
+    </p>
+
+    <p class="BodyText">
+        <b>Proposition.</b>
+        Given a infinite set \(X\), there does not exist a preorder on \(X\) which generates the cofinite topology.
+    </p>
+    <p class="BodyText">
+        <i>Proof.</i>
+        Suppose there exists a preorder \((\le)\) with the associated strict order \((<)\) such that the order topology generated by it is the same as the cofinite 
+        topology. For the cofinite topology, any non-empty open sets must intersect, and thus, since \(\{z \mid x < z\}\) and 
+        \(\{z \mid z < x\}\) are open in the order topology, their intersection is nonempty for all \(x\) if neither sets are empty. 
+        But, if this is the case, there exists some \(z\) such that \(z < x < z\) implying \(z < z\) which is a contradiction. 
+        Hence, at least one of the set is empty.
+    </p>
+        
+    <p class="BodyText">
+        Now, denoting \(U_+\) the set of \(x\) for which \(\{z \mid z < x\}\) is non-empty (so \(\{z \mid x < z\} = \varnothing\) for all \(x \in U_+\)), as 
+        \(\{z \mid z < x\}\) is open, \(\{z \mid \neg z < x\}\) is finite for all \(x \in U_+\). As for all \(x, y \in U_+\), if \(y < x\), 
+        then \(x \in \{z \mid y < z\}\) contradicting \(\{z \mid y < z\} = \varnothing\), \(\neg y < x\) for all \(x, y \in U_+\). Hence, 
+        \(y \in \{z \mid \neg z < x\}\) for all \(y \in U_+\). Thus, as \(\{z \mid \neg z < x\}\) is finite, so is \(U_+\). 
+    </p>   
+
+    <p class="BodyText">
+        Similarly, defining \(U_-\) the set of \(x\) for which \(\{z \mid x < z\}\) is non-empty, by the same argument, \(U_-\) is finite. 
+        Hence, \(\{z \mid x < z\}\) and \(\{z \mid z < x\}\) is empty for all but finitely many \(x\). But then, the topology generated by 
+        the preorder has a finite base, implying only finitely many sets are open which is a contradiction.
+    </p>
+    <p class="BodyText" style="text-align: right">🎉</p>
+
+<p class="BodyText"> 
+    <i>
+        Website deployed using Jekyll with the <a href="https://github.com/Hammie217/LatexJekyll">LatexJekyll</a> theme.
+    </i>
+</p>
+        
