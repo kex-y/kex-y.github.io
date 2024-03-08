@@ -161,7 +161,22 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     </p>
 
     <p class="BodyText">
-        In any case, this provides a characterization of precompactness in the total variational topology.
+        In any case, this provides a characterization of precompactness in the total variational topology. 
+        However, before that, we first note the following formulation of strong tightness. While this formulation
+        is seemingly weaker, the equivalence is immediate by setting \(K = \bigcap_n B_{\epsilon2^{-n}}(K_n)\) 
+        where \(K_n\) is chosen so that \(\mu(B_{\epsilon2^{-n}}(K_n)) \ge 1 - \epsilon 2^{-n}\).
+    </p>
+
+    <p class="BodyText">
+        <b>Lemma.</b>
+            Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Then \(M\) is strongly tight if and only if 
+            for all \(\epsilon > 0\) and \(f : X \to \mathbb{R}\) bounded measurable, there exists a compact set 
+            \(K \subseteq X\) such that \(f\) is continuous on \(K\) and for all \(\mu \in M\), 
+            \(\mu(B_\epsilon(K)) \ge 1 - \epsilon\).
+    </p>
+
+    <p class="BodyText">
+        With this lemma in mind, we are ready to characterize precompactness using strong tightness.
     </p>
 
     <p class="BodyText">
