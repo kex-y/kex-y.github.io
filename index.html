@@ -257,7 +257,28 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     </p>
     
     <p class="BodyText" style="text-align: right">🎉</p>
-    
+
+    <p class="BodyText">
+        To conclude, we remark the following criterion for strong tightness. 
+    </p>
+
+    <p class="BodyText">
+        <b>Proposition.</b>
+        Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Suppose that there exists a measure 
+        \(\nu \in \mathcal{M}(X)\) and \(g \in L^1(\nu)\) such that for all \(\mu \in M\), \(\mu \ll \nu\) 
+        and \(d \mu / d \nu \le g\). Then, \(M\) is strongly tight.
+    </p>
+
+    <p class="BodyText">
+        <i>Proof.</i>
+        Define \(\eta \in \mathcal{M}(X)\) by \(d \eta = \frac{g}{\|g\|_{L^1(\nu)}} d \nu\). Then, for
+        all \(\epsilon > 0\) and \(f : X \to \mathbb{R}\) bounded measurable, there exists some compact 
+        set \(K\) such that \(f\) is continuous on \(K\) and \(\eta(K^c) \le \|g\|_{L^1(\nu)}^{-1}\epsilon\). 
+        Then, for all \(\mu \in M\), we have that 
+        \[\mu(K^c) = \int_K^c \frac{d \mu}{d \nu} d \nu \le \int_K^c g d \nu 
+            = \|g\|_{L^1(\nu)}\eta(K^c) \le \epsilon\]
+        as desired.
+    </p>    
 
 <p class="Section" id="random-compact">
     <i>27 Oct. 2023.</i> &ensp; Random Compact Sets in Polish Spaces</p>
