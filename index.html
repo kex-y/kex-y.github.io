@@ -172,21 +172,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
     <p class="BodyText">
         In any case, this provides a characterization of precompactness in the total variational topology. 
-        However, before that, we first note the following formulation of strong tightness. While this formulation
-        is seemingly weaker, the equivalence is immediate by setting \(K = \bigcap_n B_{\epsilon2^{-n}}(K_n)\) 
-        where \(K_n\) is chosen so that \(\mu(B_{\epsilon2^{-n}}(K_n)) \ge 1 - \epsilon 2^{-n}\).
-    </p>
 
-    <p class="BodyText">
-        <b>Lemma.</b>
-            Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Then \(M\) is strongly tight if and only if 
-            for all \(\epsilon > 0\) and \(f : X \to \mathbb{R}\) bounded measurable, there exists a compact set 
-            \(K \subseteq X\) such that \(f\) is continuous on \(K\) and for all \(\mu \in M\), 
-            \(\mu(B_\epsilon(K)) \ge 1 - \epsilon\).
-    </p>
-
-    <p class="BodyText">
-        With this lemma in mind, we are ready to characterize precompactness using strong tightness.
     </p>
 
     <p class="BodyText">
@@ -205,54 +191,24 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     </p>
 
     <p class="BodyText">
-        The converse direction follows the same idea as the converse of Prokhorov's theorem. Namely, assuming that 
-        the sequence is not strongly tight, we will construct a continuous test function for which when testing 
-        against it, the increments are bounded below uniformly. We omit the details for the specific construction 
-        of this function since it is identical to the construction Prokhorov's theorem (see e.g. Hairer's notes on SPDEs). 
-        We instead provide the datum needed for its construction, i.e. some \(\epsilon > 0\), \(\delta \ll \epsilon\) and 
-        a sequence \((\mu_n, K_n)_{n \in \mathbb{N}}\) with \((\mu_n) \subseteq M\) and \(K_n \subseteq X\) compact 
-        where \(\mu_n(K_n) \ge \epsilon - \delta\), \(\mu_n\left(\bigcup_{k > n} K_k\right) \le \delta\) and 
-        \(B_{\epsilon / 2}(K_n) \cap B_{\epsilon / 2}(K_m) = \varnothing\) for all \(m \neq n\).
-    </p>
-      
-    <p class="BodyText">
-        As outlined above, suppose that \(M\) is not strongly tight. Then, using the above alternative formulation of 
-        strong tightness, there exists some \(\epsilon > 0\) and 
-        a bounded measurable function \(f : X \to \mathbb{R}\) such that for all \(K \subseteq X\) compact 
-        where \(f\) is continuous on \(K\), there exists some \(\mu \in M\) such that \(\mu(B_\epsilon(K)) \le 1 - \epsilon\).
-        Fixing some \(\delta > 0\), we construct the datum \((\mu_n, K_n)\) inductively as follows. 
+        For the converse, we will prove the contrapositive, i.e. not strongly tight implies the existence of a sequence 
+        of measures which does not have a convergence subsequence. In particular, we will construct a sequence of measures 
+        \((\mu_n) \subseteq M\) and compact sets \((K_n)\) such that for all \(m < n\), 
+        \(\mu_n(K_n^c) - \mu_m(K_n^c) > \epsilon / 2\). Thus, as 
+        \[\|\mu - \nu\|_{TV} = 2\sup_{S \in \mathcal{B}(X)} |\mu(S) - \nu(S)\|,\]
+        we have that \(\|\mu_n - \mu_m\|_{TV} > \epsilon\) for all \(m < n\) implying \((\mu_n)\) has no 
+        convergence subsequence.
     </p>
 
     <p class="BodyText">
-        Choose \(\mu_0 \in M\) and by Lusin's theorem, take \(K_0\) such that \(f\) is continuous on \(K_0\) 
-        and \(\mu_0(K_0) \ge 1 - \delta\). Moreover, set \(A_0 = K_0\). 
-    </p>
-
-    <p class="BodyText">
-        Now, suppose we are given \(\mu_n, K_n, A_n\) such that \(A_n\) is closed and \(f\) is continuous on \(A_n\). 
-        By the lack of strong tightness, since \(f\) is continuous on \(A_n\), we can choose \(\mu_{n + 1} \in M\) 
-        such that \(\mu_{n + 1}(B_\epsilon(A_n)) \le 1 - \epsilon\). 
-        Then, Again Lusin's theorem, we can choose a compact set \(\tilde K_{n + 1} \subseteq X\) such that \(f\) is 
-        continuous on \(\tilde K_{n + 1}\) and \(\mu_{n + 1}(\tilde K_{n + 1}) \ge 1 - \delta\). We set 
-        \(A_{n + 1} = A_n \cup \tilde K_{n + 1}\) and \(K_{n + 1} = \tilde K_{n + 1} \setminus B_{\epsilon}(A_n)\). 
-        It is clear that \(A_{n + 1}\) is closed and \(f\) is continuous on \(A_{n + 1}\).
-    </p>
-      
-    <p class="BodyText">
-        I claim that the sequence \((\mu_n, K_n)\) resulting from this procedure satisfies the claimed properties.
-        Indeed, 
-        \[\mu_{n + 1}(K_{n + 1}) \ge \mu_{n + 1}(K) - \mu_{n + 1}(B_{\epsilon}(A_n)) 
-          \ge (1 - \delta) - (1 - \epsilon) = \epsilon - \delta.\]
-        Moreover, since in the above construction, \(\mu_n(\tilde K_n) \ge 1 - \delta\), to show 
-        \(\mu_n\left(\bigcup_{m \ge n} K_{m + 1}\right) \le \delta\), it suffices if 
-        \(\tilde K_n \cap \bigcup_{m \ge n} K_{m + 1} = \varnothing\). To see this, we observe that, by construction,
-        \(\tilde K_n \subseteq A_m\) for all \(m \ge n\) and \(K_{m + 1} = \tilde K_{m + 1} \setminus B_{\epsilon}(A_m)\). Thus,
-        for all \(m \ge n\), we have that
-        \[\tilde K_n \cap K_{m + 1} \subseteq A_m \cap K_{m + 1} = \varnothing.\]
-        Finally, since \(K_n \subseteq \tilde K_n \subseteq A_n\), it follows that
-        \(B_\epsilon(K_n) \subseteq B_\epsilon(A_n)\). Thus, for all \(n < m\), 
-        \[B_\epsilon(K_n) \cap K_m \subseteq B_\epsilon(A_n) \cap K_m = \varnothing.\]
-        Hence, by triangle inequality, we have \(B_{\epsilon / 2}(K_n) \cap B_{\epsilon / 2}(K_m) = \varnothing\) 
+        Assuming \(M\) is not strongly tight, then there exists some \(\epsilon > 0\) and a bounded measurable 
+        function \(f : X \to \mathbb{R}\) such that for all compact sets \(K \subseteq X\), \(f\) is continuous 
+        on \(K\) implies the existence of some \(\mu \in M\) such that \(\mu(K^c) \ge \epsilon\). So, picking 
+        \(\mu_0 \in M\) and supposing that we are given \(\mu_1, \dots, \mu_n\), as a finite family of measures
+        is strongly tight, we can choose a compact set \(K_n \subseteq X\) such that \(f\) is continuous on \(K_n\) 
+        and for all \(m \le n\), \(\mu_m(K_n^c) \le \epsilon / 2\). Then, by the lack of strong tightness,
+        we can choose \(\mu_{n + 1} \in M\) such that \(\mu_{n + 1}(K_n^c) \ge \epsilon\). Consequently, 
+        \[\mu_{n + 1}(K_n^c) - \mu_m(K_n^c) \ge \epsilon - \frac{\epsilon}{2} = \frac{\epsilon}{2}\]
         as desired.
     </p>
     
@@ -279,6 +235,8 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
             = \|g\|_{L^1(\nu)}\eta(K^c) \le \epsilon\]
         as desired.
     </p>    
+
+    <p class="BodyText" style="text-align: right">🎉</p>
 
 <p class="Section" id="random-compact">
     <i>27 Oct. 2023.</i> &ensp; Random Compact Sets in Polish Spaces</p>
