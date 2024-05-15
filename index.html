@@ -94,7 +94,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     Let \(\mu \in \mathcal{M}(X)\) be a Gaussian and denote \(\mathcal{H}_\mu\) for its Cameron-Martin space.
     For \(h \in X\), denoting \(\tau_h : x \in X \mapsto x + h\), we have that \(\tau_h^* \mu \ll \mu\) if and only 
     if \(h \in \mathcal{H}_\mu\). In this case, 
-    \[\dv{\tau_h^* \mu}{\mu} = \exp(h^*(x) - \frac{1}{2}\|h\|^2_\mu).\]
+    \[\frac{d\tau_h^* \mu}{d\mu}(x) = \exp(h^*(x) - \frac{1}{2}\|h\|^2_\mu).\]
 </p>
 
 <p class="BodyText">
@@ -103,15 +103,15 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     on \([0, 1]\) and we call it the Wiener measure. We have that \(\mathcal{H}_\mu = H^{1, 2}_0([0, 1])\) - 
     the space of all absolutely continuous functions \(h\) with \(h(0) = 0\) and \(\dot h(s) \in L^2([0, 1])\). 
     Moreover, for \(h \in \mathcal{H}_\mu\), 
-    \(h^*(k) = \int_0^1 \dot h(s) \dot k(s) \dd s\). As this defines a bounded linear functional from \(\mathcal{H}_\mu\), 
+    \(h^*(k) = \int_0^1 \dot h(s) \dot k(s) d s\). As this defines a bounded linear functional from \(\mathcal{H}_\mu\), 
     we can almost surely uniquely extend \(h^*\) to a measurable element of \(C_\mu(\delta_t, \delta_s)^*\). 
     To see this, it suffices to check that 
     \[h_t = \delta_t(h) = C_\mu(\delta_t, h^*) = h^*(C_\mu(\delta_t)).\]
     We see that 
-    \[C_\mu(\delta_t)_s = \left(\int \omega \delta_t(\omega) \mu(\dd \omega)\right)_s 
-    = \int \omega_s \omega_t \mu(\dd \omega) = C_\mu(\delta_t, \delta_s) = s \wedge t.\]
+    \[C_\mu(\delta_t)_s = \left(\int \omega \delta_t(\omega) \mu(d \omega)\right)_s 
+    = \int \omega_s \omega_t \mu(d \omega) = C_\mu(\delta_t, \delta_s) = s \wedge t.\]
     Thus, \(\dot{C}_\mu(\delta_t)_s = \mathbb{1}_{[0, t]}(s)\) and hence,
-    \[h^*(C_\mu(\delta_t)) = \int_0^t \dot f_s \dd s = f_t\]
+    \[h^*(C_\mu(\delta_t)) = \int_0^t \dot f_s d s = f_t\]
     as required.
 </p>
 
@@ -120,13 +120,13 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     stays near a given function. In particular, for \(f \in H^{1, 2}_0([0, 1])\), denoting \(\mu_W\) for the 
     Wiener measure, we have that
     \[\mathbb{P}(|B_t - f|_\infty \le \epsilon) = \tau_{-f}^* \mu_W(\overline B_\epsilon(0))
-      = e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])}} \int_{\overline B_\epsilon(0)} e^{- f^*(\omega)} \mu_W(\dd \omega).\]
+      = e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])}} \int_{\overline B_\epsilon(0)} e^{- f^*(\omega)} \mu_W(d \omega).\]
     This is then bounded above by 
     \[e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])} + \epsilon \|f^*\|_{X^*}} \mathbb{P}(|B_t|_\infty \le \epsilon).\]
     On the other hand, using the inequality \(e^x \ge 1 + x\), we have that 
-    \[\int_{\overline B_\epsilon(0)} e^{- f^*(\omega)} \mu_W(\dd \omega) \ge 
-      \int_{\overline B_\epsilon(0)} (1 + - f^*(\omega)) \mu_W(\dd \omega)
-      \ge \mathbb{P}(|B_t|_\infty \le \epsilon) - \int_{\overline B_\epsilon(0)} f^*(\omega) \mu_W(\dd \omega)\]
+    \[\int_{\overline B_\epsilon(0)} e^{- f^*(\omega)} \mu_W(d \omega) \ge 
+      \int_{\overline B_\epsilon(0)} (1 + - f^*(\omega)) \mu_W(d \omega)
+      \ge \mathbb{P}(|B_t|_\infty \le \epsilon) - \int_{\overline B_\epsilon(0)} f^*(\omega) \mu_W(d \omega)\]
     Now, since \(f^*_* \mu_W \sim \mathcal{N}(0, \|f\|_{\mathcal{H}_W}^2)\), the last integral is zero by spherical symmetry. 
     Consequently, have the bound 
     \[\mathbb{P}(|B_t - f|_\infty \le \epsilon) \in 
