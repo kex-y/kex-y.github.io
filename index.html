@@ -15,53 +15,127 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <p class="Section">Contents</p>
 
-<p>
-    <a href="#precompact">
-        <div class="Contents">
-            Precompactness in the Total Variational Topology
-        </div>
-        <div class="ContentsRight">
-            7 Mar. 2024
-        </div>
-    </a>
+<a href="#cameron-martin">
+    <div class="Contents">
+        An application of the Cameron-Martin theorem
+    </div>
+    <div class="ContentsRight">
+        15 May. 2024
+    </div>
+</a>
 </p>
 
 <p>
-    <a href="#random-compact">
-        <div class="Contents">
-            Random Compact Sets in Polish Spaces
-        </div>
-        <div class="ContentsRight">
-            27 Oct. 2023
-        </div>
-    </a>
+<a href="#precompact">
+    <div class="Contents">
+        Precompactness in the Total Variational Topology
+    </div>
+    <div class="ContentsRight">
+        7 Mar. 2024
+    </div>
+</a>
 </p>
 
 <p>
-    <a href="#order-connected">
-        <div class="Contents">
-            Order Connected Sets are Measurable in \(\mathbb{R}^n\)
-        </div>
-        <div class="ContentsRight">
-            30 Jul. 2022
-        </div>
-    </a>
+<a href="#random-compact">
+    <div class="Contents">
+        Random Compact Sets in Polish Spaces
+    </div>
+    <div class="ContentsRight">
+        27 Oct. 2023
+    </div>
+</a>
 </p>
 
 <p>
-    <a href="#order-topology" class="Subsection">
-        <div>
-            <div class="Contents">
-                Preorder Cannot Generate the Cofinite Topology 
-            </div>
-            <div class="ContentsRight">
-                3 Apr. 2022
-            </div>
+<a href="#order-connected">
+    <div class="Contents">
+        Order Connected Sets are Measurable in \(\mathbb{R}^n\)
+    </div>
+    <div class="ContentsRight">
+        30 Jul. 2022
+    </div>
+</a>
+</p>
+
+<p>
+<a href="#order-topology" class="Subsection">
+    <div>
+        <div class="Contents">
+            Preorder Cannot Generate the Cofinite Topology 
         </div>
-    </a>
+        <div class="ContentsRight">
+            3 Apr. 2022
+        </div>
+    </div>
+</a>
 </p>
 
 <div class="spacer"></div>
+
+<p class="Section" id="cameron-martin"> 
+<i>15 May. 2024.</i> An application of the Cameron-Martin theorem</p>
+
+<p class="BodyText">
+    The Cameron-Martin theorem provides a characterization of the Gaussian measure on infinite dimensional 
+    spaces. While I first saw this definition in Martin's lectures on SPDEs, it was mostly presented 
+    with context with its application to SPDEs. However, while reading Li and Sieber's 
+    <a href="https://arxiv.org/abs/2012.01910">paper</a>, I saw a neat application of it in bounding 
+    the probability that the fractional Brownian motion stays near a given function. In this entry, 
+    I'll record this application in the simple case of the Brownian motion.
+</p>
+
+<p class="BodyText">
+    The Cameron-Martin theorem is the following.
+</p>
+
+<p class="BodyText">
+    <b>Theorem.</b>
+    Let \(\mu \in \mathcal{M}(X)\) be a Gaussian and denote \(\mathcal{H}_\mu\) for its Cameron-Martin space.
+    For \(h \in X\), denoting \(\tau_h : x \in X \mapsto x + h\), we have that \(\tau_h^* \mu \ll \mu\) if and only 
+    if \(h \in \mathcal{H}_\mu\). In this case, 
+    \[\dv{\tau_h^* \mu}{\mu} = \exp(h^*(x) - \frac{1}{2}\|h\|^2_\mu).\]
+</p>
+
+<p class="BodyText">
+    Let \(\mu\) be the Gaussian measure on \(\mathcal{C}([0, 1], \mathbb{R})\) with covariance 
+    \(C_\mu(\delta_t, \delta_s) = s \wedge t\). \(\mu\) corresponds to the law of the Brownian motion 
+    on \([0, 1]\) and we call it the Wiener measure. We have that \(\mathcal{H}_\mu = H^{1, 2}_0([0, 1])\) - 
+    the space of all absolutely continuous functions \(h\) with \(h(0) = 0\) and \(\dot h(s) \in L^2([0, 1])\). 
+    Moreover, for \(h \in \mathcal{H}_\mu\), 
+    \(h^*(k) = \int_0^1 \dot h(s) \dot k(s) \dd s\). As this defines a bounded linear functional from \(\mathcal{H}_\mu\), 
+    we can almost surely uniquely extend \(h^*\) to a measurable element of \(C_\mu(\delta_t, \delta_s)^*\). 
+    To see this, it suffices to check that 
+    \[h_t = \delta_t(h) = C_\mu(\delta_t, h^*) = h^*(C_\mu(\delta_t)).\]
+    We see that 
+    \[C_\mu(\delta_t)_s = \left(\int \omega \delta_t(\omega) \mu(\dd \omega)\right)_s 
+    = \int \omega_s \omega_t \mu(\dd \omega) = C_\mu(\delta_t, \delta_s) = s \wedge t.\]
+    Thus, \(\dot{C}_\mu(\delta_t)_s = \mathbb{1}_{[0, t]}(s)\) and hence,
+    \[h^*(C_\mu(\delta_t)) = \int_0^t \dot f_s \dd s = f_t\]
+    as required.
+</p>
+
+<p class="BodyText">
+    As an application, the Cameron-Martin theorem allows us to bound the probability that a Brownian motion 
+    stays near a given function. In particular, for \(f \in H^{1, 2}_0([0, 1])\), denoting \(\mu_W\) for the 
+    Wiener measure, we have that
+    \[\mathbb{P}(|B_t - f|_\infty \le \epsilon) = \tau_{-f}^* \mu_W(\overline B_\epsilon(0))
+      = e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])}} \int_{\overline B_\epsilon(0)} e^{- f^*(\omega)} \mu_W(\dd \omega).\]
+    This is then bounded above by 
+    \[e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])} + \epsilon \|f^*\|_{X^*}} \mathbb{P}(|B_t|_\infty \le \epsilon).\]
+    On the other hand, using the inequality \(e^x \ge 1 + x\), we have that 
+    \[\int_{\overline B_\epsilon(0)} e^{- f^*(\omega)} \mu_W(\dd \omega) \ge 
+      \int_{\overline B_\epsilon(0)} (1 + - f^*(\omega)) \mu_W(\dd \omega)
+      \ge \mathbb{P}(|B_t|_\infty \le \epsilon) - \int_{\overline B_\epsilon(0)} f^*(\omega) \mu_W(\dd \omega)\]
+    Now, since \(f^*_* \mu_W \sim \mathcal{N}(0, \|f\|_{\mathcal{H}_W}^2)\), the last integral is zero by spherical symmetry. 
+    Consequently, have the bound 
+    \[\mathbb{P}(|B_t - f|_\infty \le \epsilon) \in 
+      e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])}} 
+      \left[\mathbb{P}(|B_t|_\infty \le \epsilon), e^{\epsilon \|f^*\|_{X^*}}\mathbb{P}(|B_t|_\infty \le \epsilon)\right]\]
+    and thus, 
+    \[\lim_{\epsilon \downarrow 0} \frac{\mathbb{P}(|B_t - f|_\infty \le \epsilon)}{\mathbb{P}(|B_t|_\infty \le \epsilon)} 
+      = e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])}}.\]
+</p>
 
 <p class="Section" id="precompact"> 
     <i>7 Mar. 2024.</i> Precompactness in the Total Variational Topology</p>
