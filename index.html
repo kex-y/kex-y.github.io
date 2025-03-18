@@ -15,6 +15,14 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <p class="Section">Contents</p>
 
+<a href="paper-1">
+    <div class="Contents">
+        Strong completeness of SDEs and Non-explosion of RDEs
+    </div>
+    <div class="ContentsRight">
+        12 Feb. 2025
+    </div>
+
 <a href="#disjoint-mutsig">
     <div class="Contents">
         Disjointness and Mutually Singular
@@ -82,12 +90,21 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <div class="spacer"></div>
 
+<p class="Section" id="paper-1"> 
+    <i>12 Feb. 2025</i> Strong completeness of SDEs and Non-explosion of RDEs</p>
+    
+    <p class="BodyText">
+        Xue-Mei Li and I have recently uploaded a paper to the arXiv titled 
+        <i>Strong completeness of SDEs and non-explosion for RDEs with coefficients having unbounded derivatives</i>. 
+        You can read it <a href="arxiv.org/abs/2502.08799">here</a>.
+    </p>
+
 <p class="Section" id="disjoint-mutsig"> 
     <i>19 Oct. 2024.</i> Disjointness and Mutually Singular</p>
 
     <p class="BodyText">
         For an ordered set \((X, \le)\), we say \(x, y \in X\) are disjoint if for any \(z \le x\) and \(z \le y\),
-        we have that \(z = \perp\). Rémy on the Lean Zulip observed that, in the case of \(\sigma\)-finite measures, 
+        we have that \(z = \perp\). Rémy Degenne on the Lean Zulip observed that, in the case of \(\sigma\)-finite measures, 
         the notion of mutually singular is equivalent to disjointness. He then asked whether or not this fact generalizes 
         to arbitrary measures (Rémy's proof used the Radon-Nikodym derivative and consequently relies on 
         \(\sigma\)-finiteness). In this short note, we provide an elementary proof of this equivalence without 
@@ -123,10 +140,8 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     <p class="BodyText">
         The Cameron-Martin theorem provides a characterization of the Gaussian measure on infinite dimensional 
         spaces. While I first saw this definition in Martin's lectures on SPDEs, it was mostly presented 
-        with context with its application to SPDEs. However, while reading Li and Sieber's 
-        <a href="https://arxiv.org/abs/2012.01910">paper</a>, I saw a neat application of it in bounding 
-        the probability that the fractional Brownian motion stays near a given function. In this entry, 
-        I'll record this application in the simple case of the Brownian motion.
+        with context with its application to SPDEs. In this entry, I'll record an application of this 
+        theorem in the context of obtaining a maximal inequality for Brownian motions.
     </p>
 
     <p class="BodyText">
@@ -368,7 +383,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     <i>27 Oct. 2023.</i> &ensp; Random Compact Sets in Polish Spaces</p>
 
     <p class="BodyText">
-        Here is a fun puzzle I thought about today:
+        Here is a fun puzzle:
         Let \(X\) be a polish space and \(K\) a random compact set of \(X\) (i.e. a random variable taking values 
         in compact subsets of \(X\)). Fix \(\epsilon > 0\), does there necessarily exists a deterministic compact 
         set \(A\) such that \(\mathbb{P}(K \subseteq A) \ge 1 - \epsilon\)?
@@ -474,21 +489,6 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
     <p class="BodyText">
         We will in this short article provide a proof for this theorem.
-        For reference, let us first quickly recall some basic definitions from lattice theory.
-    </p>
-
-    <p class="BodyText">
-        <b>Definition.</b> 
-        For a given set \(X\), a preorder \((\le)\) on \(X\) is a binary relation such that 
-        it is reflexive: for all \(x \in X\), \(x \le x\); and
-        it is transitive: for all \(x, y, z \in X\), if \(x \le y\) and \(y \le z\), then \(x \le z\).
-    </p>
-
-    <p class="BodyText">
-        <b>Definition.</b>
-        For a given set \(X\), a strict order \((<)\) on \(X\) is a binary relation such that 
-        it is irreflexive: for all \(x < X\), \(\neg x < x\); and 
-        it is transitive: for all \(x, y, z \in X\), if \(x \le y\) and \(y \le z\), then \(x \le z\).
     </p>
 
     <p class="BodyText">
