@@ -6,7 +6,6 @@ from pathlib import Path
 
 ENTRIES_DIR = Path(__file__).parent / "entries"
 
-# Front matter matching the original exactly
 FRONT_MATTER = """\
 ---
 layout: default
@@ -23,23 +22,95 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 ---"""
 
 
-def parse_entry(tex_path):
-    """Parse a .tex file and return (id, title, date, body)."""
-    text = tex_path.read_text()
-    meta = {}
-    lines = text.split("\n")
-    body_start = 0
-    for i, line in enumerate(lines):
-        m = re.match(r"^%\s*(\w+):\s*(.+)$", line)
-        if m:
-            meta[m.group(1)] = m.group(2).strip()
-        elif line.strip() == "":
+def find_matching_brace(text, start):
+    """Find the index of the closing brace matching the opening brace at start."""
+    depth = 0
+    for i in range(start, len(text)):
+        if text[i] == '{':
+            depth += 1
+        elif text[i] == '}':
+            depth -= 1
+            if depth == 0:
+                return i
+    return -1
+
+
+def convert_latex_commands(text):
+    """Convert LaTeX formatting commands to HTML."""
+    result = text
+    for cmd, tag in [("textbf", "b"), ("textit", "i"), ("emph", "i")]:
+        while True:
+            m = re.search(rf"\\{cmd}\{{", result)
+            if not m:
+                break
+            brace_start = m.end() - 1
+            brace_end = find_matching_brace(result, brace_start)
+            if brace_end == -1:
+                break
+            inner = result[brace_start + 1:brace_end]
+            result = result[:m.start()] + f"<{tag}>" + inner + f"</{tag}>" + result[brace_end + 1:]
+    return result
+
+
+def tex_to_html(tex_body):
+    """Convert LaTeX body text to HTML paragraphs."""
+    # Split into paragraphs on blank lines
+    # But we need to be careful not to split inside math environments
+    paragraphs = re.split(r"\n\s*\n", tex_body.strip())
+
+    html_parts = []
+    for para in paragraphs:
+        para = para.strip()
+        if not para:
             continue
-        else:
-            body_start = i
-            break
-    body = "\n".join(lines[body_start:])
-    return meta["id"], meta["title"], meta["date"], body
+
+        # Handle \qed
+        if para == r"\qed":
+            html_parts.append('    <p class="BodyText" style="text-align: right">🎉</p>')
+            continue
+
+        # Convert LaTeX commands to HTML
+        para = convert_latex_commands(para)
+
+        # Indent content lines
+        lines = para.split("\n")
+        indented = "\n".join("        " + line.strip() for line in lines)
+
+        html_parts.append(f'    <p class="BodyText">\n{indented}\n    </p>')
+
+    return "\n\n" + "\n\n".join(html_parts) + "\n"
+
+
+def parse_entry(tex_path):
+    """Parse a .tex file and return (id, title, date, body_html)."""
+    text = tex_path.read_text()
+
+    # Extract metadata from comments
+    meta = {}
+    for m in re.finditer(r"^%\s*(\w+):\s*(.+)$", text, re.MULTILINE):
+        meta[m.group(1)] = m.group(2).strip()
+
+    # Extract body between \begin{document} and \end{document}
+    doc_match = re.search(
+        r"\\begin\{document\}(.*?)\\end\{document\}",
+        text, re.DOTALL,
+    )
+    if doc_match:
+        body = doc_match.group(1)
+    else:
+        # Fallback: use everything after metadata lines
+        lines = text.split("\n")
+        body_start = 0
+        for i, line in enumerate(lines):
+            if re.match(r"^%\s*\w+:", line) or line.strip() == "":
+                continue
+            else:
+                body_start = i
+                break
+        body = "\n".join(lines[body_start:])
+
+    body_html = tex_to_html(body)
+    return meta["id"], meta["title"], meta["date"], body_html
 
 
 def load_entries():
@@ -120,8 +191,6 @@ def generate_toc(entries):
 def generate_entry_html(entry, index):
     """Generate the HTML for a single entry."""
     eid, title, date = entry["id"], entry["title"], entry["date"]
-    # First two entries: trailing space after id, no &ensp;
-    # Later entries: no trailing space, with &ensp;
     if index < 2:
         header = (
             f'<p class="Section" id="{eid}"> \n'
@@ -132,7 +201,7 @@ def generate_entry_html(entry, index):
             f'<p class="Section" id="{eid}">\n'
             f'    <i>{date}.</i> &ensp; {title}</p>'
         )
-    return header + "\n\n" + entry["body"]
+    return header + "\n" + entry["body"]
 
 
 def generate_entries(entries):
@@ -140,7 +209,7 @@ def generate_entries(entries):
     parts = []
     for i, entry in enumerate(entries):
         parts.append(generate_entry_html(entry, i))
-    return "\n\n".join(parts)
+    return "\n".join(parts)
 
 
 def main():

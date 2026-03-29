@@ -2,181 +2,145 @@
 % title: Precompactness in the Total Variational Topology
 % date: 7 Mar. 2024
 
-    <p class="BodyText">
-        There is the following classical result which relates the Wasserstein distance to the weak
-        topology on the space of measures:
-    </p>
+\documentclass{article}
+\usepackage{amsmath, amssymb}
 
-    <p class="BodyText">
-        Let \(X\) be a Polish space and let \(d\) be a metric compatible with the topology of \(X\). By replacing
-        \(d\) by \(d \wedge 1\), we may assume that \(d \le 1\). Denoting \(\mathcal{M}(X)\) the space of
-        probability measures on \(X\), for a sequence of measures
-        \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\), we have that
-        \begin{equation}\label{eq:wasserstein-weak}
-        d_1(\mu_n, \mu) \to 0 \iff \mu_n \rightharpoonup \mu.
-        \end{equation}
-        where \(d_1\) denotes the Wasserstein distance of order 1 corresponding to the metric \(d\) and
-        \(\rightharpoonup\) denotes weak convergence.
-    </p>
+\begin{document}
 
-    <p class="BodyText">
-        While playing around with the proof of this result, I noticed that by assuming a slightly stronger condition
-        (which is reminiscent of tightness), the result can be strengthened to convergence in total variation.
-        In this note I record these relations.
-    </p>
+There is the following classical result which relates the Wasserstein distance to the weak
+topology on the space of measures:
 
-    <p class="BodyText">
-        Recall that Lusin's theorem for Radon measures states that: Let \(X\) be a locally compact Polish space
-        and take \(\mu \in \mathcal{M}(X)\) (so \(\mu\) is automatically a Radon measure), \(f : X \to \mathbb{R}\)
-        a bounded measurable function and \(\epsilon > 0\). Then, there exists a compact set \(K \subseteq X\)
-        such that \(f\) is continuous on \(K\) and \(\mu(K) \ge 1 - \epsilon\). This motivates the following definition.
-    </p>
+Let \(X\) be a Polish space and let \(d\) be a metric compatible with the topology of \(X\). By replacing
+\(d\) by \(d \wedge 1\), we may assume that \(d \le 1\). Denoting \(\mathcal{M}(X)\) the space of
+probability measures on \(X\), for a sequence of measures
+\((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\), we have that
+\begin{equation}\label{eq:wasserstein-weak}
+d_1(\mu_n, \mu) \to 0 \iff \mu_n \rightharpoonup \mu.
+\end{equation}
+where \(d_1\) denotes the Wasserstein distance of order 1 corresponding to the metric \(d\) and
+\(\rightharpoonup\) denotes weak convergence.
 
-    <p class="BodyText">
-        <b>Definition.</b>
-        Given a set of measures \(M \subseteq \mathcal{M}(X)\), we say that \(M\) is strongly tight if for all
-        \(f : X \to \mathbb{R}\) bounded measurable and \(\epsilon > 0\), there exists a compact set \(K \subseteq X\)
-        such that \(f\) is continuous on \(K\) and for all \(\mu \in M\), \(\mu(K) \ge 1 - \epsilon\).
-    </p>
+While playing around with the proof of this result, I noticed that by assuming a slightly stronger condition
+(which is reminiscent of tightness), the result can be strengthened to convergence in total variation.
+In this note I record these relations.
 
-    <p class="BodyText">
-        We remark that, by applying Lusin's theorem to \(\epsilon / n\), it is clear that any finite family of measures
-        is automatically strongly tight. Moreover, we see that if \(\mu_n \to \mu\) in total variation, then
-        \(\{\mu_n, \mu\}_n\) is also strongly tight. Finally, as the name suggests, it is clear that if
-        \(M \subseteq \mathcal{M}(X)\) is strongly tight, then it is also tight.
-    </p>
+Recall that Lusin's theorem for Radon measures states that: Let \(X\) be a locally compact Polish space
+and take \(\mu \in \mathcal{M}(X)\) (so \(\mu\) is automatically a Radon measure), \(f : X \to \mathbb{R}\)
+a bounded measurable function and \(\epsilon > 0\). Then, there exists a compact set \(K \subseteq X\)
+such that \(f\) is continuous on \(K\) and \(\mu(K) \ge 1 - \epsilon\). This motivates the following definition.
 
-    <p class="BodyText">
-        By slightly modifying the proof of convergence in Wasserstein distance implies weak convergence, we observe the following
-        relation between convergence in Wasserstein distance and convergence in total variation.
-    </p>
+\textbf{Definition.}
+Given a set of measures \(M \subseteq \mathcal{M}(X)\), we say that \(M\) is strongly tight if for all
+\(f : X \to \mathbb{R}\) bounded measurable and \(\epsilon > 0\), there exists a compact set \(K \subseteq X\)
+such that \(f\) is continuous on \(K\) and for all \(\mu \in M\), \(\mu(K) \ge 1 - \epsilon\).
 
-    <p class="BodyText">
-        <b>Proposition.</b>
-        Let \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\).
-        Then, \(\mu_n \to \mu\) in total variation if and only if \((\mu_n)_n\) is strongly tight and \(d_1(\mu_n, \mu) \to 0\).
-    </p>
+We remark that, by applying Lusin's theorem to \(\epsilon / n\), it is clear that any finite family of measures
+is automatically strongly tight. Moreover, we see that if \(\mu_n \to \mu\) in total variation, then
+\(\{\mu_n, \mu\}_n\) is also strongly tight. Finally, as the name suggests, it is clear that if
+\(M \subseteq \mathcal{M}(X)\) is strongly tight, then it is also tight.
 
-    <p class="BodyText">
-        <i>Proof.</i>
-        The forward direction is obvious so we only prove the reverse. Suppose that \((\mu_n)_n\) is strongly tight
-        and \(d_1(\mu_n, \mu) \to 0\). Then, taking \(f : X \to \mathbb{R}\) be a bounded measurable function,
-        we will show that
-        \[\left|\int f d \mu_n - \int f d \mu\right| \to 0.\]
-        Fixing \(\epsilon > 0\), by strong tightness, there exists some \(K\) compact such that \(f\) is uniformly continuous on \(K\) and
-        \(\mu(K^c), \mu_n(K^c) < \epsilon\) for all \(n\). Thus, there exists some \(\delta > 0\) such that
-        for all \(x, y \in \Delta_\delta := \{(x, y) \in K^2 : d(x, y) < \delta\}\), we have \(|f(x) - f(y)| < \epsilon\).
-    </p>
+By slightly modifying the proof of convergence in Wasserstein distance implies weak convergence, we observe the following
+relation between convergence in Wasserstein distance and convergence in total variation.
 
-    <p class="BodyText">
-        Moreover, since \(d_1(\mu_n, \mu) \to 0\), there exists a sequence of couplings
-        \(\Pi_n \in \mathcal{C}(\mu_n, \mu)\) such that
-        \[\int d(x, y) \Pi_n(d x, d y) \to 0.\]
-        So,
-        \[0 \leftarrow \int d(x, y) \Pi_n(d x, d y) \ge \int_{\Delta_\delta^c \cap K^2} d(x, y) \Pi_n(d x, d y)
-            \ge \delta \Pi_n(\Delta_\delta^c \cap K^2) \ge 0\]
-        implying \(\Pi_n(\Delta_\delta^c \cap K^2) < \epsilon\) for sufficiently large \(n\). Thus, for sufficiently large \(n\),
-        we have that
-        \begin{align*}
-            \left|\int f d \mu_n - \int f d \mu\right|
-            & = \left|\int (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
-            & \le \left|\int_{\Delta_\delta} (f(x) - f(y)) \Pi_n(d x, d y)\right|
-            + \left|\int_{\Delta_\delta^c \cap K^2} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
-            & + \left|\int_{X \times K^c} (f(x) - f(y)) \Pi_n(d x, d y)\right| +
-            \left|\int_{K^c \times X} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
-            & \le \epsilon + 2|f|_\infty \epsilon + 2|f|_\infty \mu_n(X)\mu(K^c) + 2|f|_\infty \mu_n(K^c)\mu(K)\\
-            & \le \epsilon(1 + 6|f|_\infty).
-        \end{align*}
-    </p>
+\textbf{Proposition.}
+Let \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\).
+Then, \(\mu_n \to \mu\) in total variation if and only if \((\mu_n)_n\) is strongly tight and \(d_1(\mu_n, \mu) \to 0\).
 
-    <p class="BodyText">
-        Consequently, taking \(\epsilon \to 0\) gives the desired limit.
-    </p>
+\textit{Proof.}
+The forward direction is obvious so we only prove the reverse. Suppose that \((\mu_n)_n\) is strongly tight
+and \(d_1(\mu_n, \mu) \to 0\). Then, taking \(f : X \to \mathbb{R}\) be a bounded measurable function,
+we will show that
+\[\left|\int f d \mu_n - \int f d \mu\right| \to 0.\]
+Fixing \(\epsilon > 0\), by strong tightness, there exists some \(K\) compact such that \(f\) is uniformly continuous on \(K\) and
+\(\mu(K^c), \mu_n(K^c) < \epsilon\) for all \(n\). Thus, there exists some \(\delta > 0\) such that
+for all \(x, y \in \Delta_\delta := \{(x, y) \in K^2 : d(x, y) < \delta\}\), we have \(|f(x) - f(y)| < \epsilon\).
 
-    <p class="BodyText" style="text-align: right">🎉</p>
+Moreover, since \(d_1(\mu_n, \mu) \to 0\), there exists a sequence of couplings
+\(\Pi_n \in \mathcal{C}(\mu_n, \mu)\) such that
+\[\int d(x, y) \Pi_n(d x, d y) \to 0.\]
+So,
+\[0 \leftarrow \int d(x, y) \Pi_n(d x, d y) \ge \int_{\Delta_\delta^c \cap K^2} d(x, y) \Pi_n(d x, d y)
+    \ge \delta \Pi_n(\Delta_\delta^c \cap K^2) \ge 0\]
+implying \(\Pi_n(\Delta_\delta^c \cap K^2) < \epsilon\) for sufficiently large \(n\). Thus, for sufficiently large \(n\),
+we have that
+\begin{align*}
+    \left|\int f d \mu_n - \int f d \mu\right|
+    & = \left|\int (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
+    & \le \left|\int_{\Delta_\delta} (f(x) - f(y)) \Pi_n(d x, d y)\right|
+    + \left|\int_{\Delta_\delta^c \cap K^2} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
+    & + \left|\int_{X \times K^c} (f(x) - f(y)) \Pi_n(d x, d y)\right| +
+    \left|\int_{K^c \times X} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
+    & \le \epsilon + 2|f|_\infty \epsilon + 2|f|_\infty \mu_n(X)\mu(K^c) + 2|f|_\infty \mu_n(K^c)\mu(K)\\
+    & \le \epsilon(1 + 6|f|_\infty).
+\end{align*}
 
-    <p class="BodyText">
-        Alternatively, one can also obtain the above by using the equivalence of weak convergence and convergence
-        is Wasserstein distance. In particular,
-        we note that for a given bounded measurable function \(f : X \to \mathbb{R}\) and \(\mu \in \mathcal{M}(X)\),
-        there exists a continuous function \(\tilde f : X \to \mathbb{R}\) such that
-        \[\left| \int f d \mu - \int \tilde f d \mu \right| < \epsilon.\]
-        This follows by Lusin's theorem and Tietze extension. Hence, in a similar vein, in the case where we have
-        strong tightness, applying Tietze extension and triangle inequality provides convergence in total variation
-        given weak convergence.
-    </p>
+Consequently, taking \(\epsilon \to 0\) gives the desired limit.
 
-    <p class="BodyText">
-        In any case, this provides a characterization of precompactness in the total variational topology.
+\qed
 
-    </p>
+Alternatively, one can also obtain the above by using the equivalence of weak convergence and convergence
+is Wasserstein distance. In particular,
+we note that for a given bounded measurable function \(f : X \to \mathbb{R}\) and \(\mu \in \mathcal{M}(X)\),
+there exists a continuous function \(\tilde f : X \to \mathbb{R}\) such that
+\[\left| \int f d \mu - \int \tilde f d \mu \right| < \epsilon.\]
+This follows by Lusin's theorem and Tietze extension. Hence, in a similar vein, in the case where we have
+strong tightness, applying Tietze extension and triangle inequality provides convergence in total variation
+given weak convergence.
 
-    <p class="BodyText">
-        <b>Proposition.</b>
-        Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Then \(M\) is strongly tight if and only if it is
-        precompact in the total variational topology.
-    </p>
+In any case, this provides a characterization of precompactness in the total variational topology.
 
-    <p class="BodyText">
-        <i>Proof.</i>
-        The forward direction is simple. Indeed, if \(M\) is strongly tight, then it is tight and so any sequence
-        of measures \((\mu_n)\) in \(M\) has a weakly convergent subsequence \(\mu_{n_k} \to \mu \in \mathcal{M}(X)\).
-        However, as \((\mu_{n_k})\) is also strongly tight, the previous lemma show that this convergence
-        can be taking to be instead convergence in total variation. Thus, any sequence in \(M\) has a convergent
-        subsequence in total variation which implies that \(M\) is precompact.
-    </p>
+\textbf{Proposition.}
+Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Then \(M\) is strongly tight if and only if it is
+precompact in the total variational topology.
 
-    <p class="BodyText">
-        For the converse, we will prove the contrapositive, i.e. not strongly tight implies the existence of a sequence
-        of measures which does not have a convergence subsequence. In particular, we will construct a sequence of measures
-        \((\mu_n) \subseteq M\) and compact sets \((K_n)\) such that for all \(m < n\),
-        \(\mu_n(K_n^c) - \mu_m(K_n^c) > \epsilon / 2\). Thus, as
-        \[\|\mu - \nu\|_{TV} = 2\sup_{S \in \mathcal{B}(X)} |\mu(S) - \nu(S)|,\]
-        we have that \(\|\mu_n - \mu_m\|_{TV} > \epsilon\) for all \(m < n\) implying \((\mu_n)\) has no
-        convergence subsequence.
-    </p>
+\textit{Proof.}
+The forward direction is simple. Indeed, if \(M\) is strongly tight, then it is tight and so any sequence
+of measures \((\mu_n)\) in \(M\) has a weakly convergent subsequence \(\mu_{n_k} \to \mu \in \mathcal{M}(X)\).
+However, as \((\mu_{n_k})\) is also strongly tight, the previous lemma show that this convergence
+can be taking to be instead convergence in total variation. Thus, any sequence in \(M\) has a convergent
+subsequence in total variation which implies that \(M\) is precompact.
 
-    <p class="BodyText">
-        Assuming \(M\) is not strongly tight, then there exists some \(\epsilon > 0\) and a bounded measurable
-        function \(f : X \to \mathbb{R}\) such that for all compact sets \(K \subseteq X\), \(f\) is continuous
-        on \(K\) implies the existence of some \(\mu \in M\) such that \(\mu(K^c) \ge \epsilon\). So, picking
-        \(\mu_0 \in M\) and supposing that we are given \(\mu_1, \dots, \mu_n\), as a finite family of measures
-        is strongly tight, we can choose a compact set \(K_n \subseteq X\) such that \(f\) is continuous on \(K_n\)
-        and for all \(m \le n\), \(\mu_m(K_n^c) \le \epsilon / 2\). Then, by the lack of strong tightness,
-        we can choose \(\mu_{n + 1} \in M\) such that \(\mu_{n + 1}(K_n^c) \ge \epsilon\). Consequently,
-        \[\mu_{n + 1}(K_n^c) - \mu_m(K_n^c) \ge \epsilon - \frac{\epsilon}{2} = \frac{\epsilon}{2}\]
-        as desired.
-    </p>
+For the converse, we will prove the contrapositive, i.e. not strongly tight implies the existence of a sequence
+of measures which does not have a convergence subsequence. In particular, we will construct a sequence of measures
+\((\mu_n) \subseteq M\) and compact sets \((K_n)\) such that for all \(m < n\),
+\(\mu_n(K_n^c) - \mu_m(K_n^c) > \epsilon / 2\). Thus, as
+\[\|\mu - \nu\|_{TV} = 2\sup_{S \in \mathcal{B}(X)} |\mu(S) - \nu(S)|,\]
+we have that \(\|\mu_n - \mu_m\|_{TV} > \epsilon\) for all \(m < n\) implying \((\mu_n)\) has no
+convergence subsequence.
 
-    <p class="BodyText" style="text-align: right">🎉</p>
+Assuming \(M\) is not strongly tight, then there exists some \(\epsilon > 0\) and a bounded measurable
+function \(f : X \to \mathbb{R}\) such that for all compact sets \(K \subseteq X\), \(f\) is continuous
+on \(K\) implies the existence of some \(\mu \in M\) such that \(\mu(K^c) \ge \epsilon\). So, picking
+\(\mu_0 \in M\) and supposing that we are given \(\mu_1, \dots, \mu_n\), as a finite family of measures
+is strongly tight, we can choose a compact set \(K_n \subseteq X\) such that \(f\) is continuous on \(K_n\)
+and for all \(m \le n\), \(\mu_m(K_n^c) \le \epsilon / 2\). Then, by the lack of strong tightness,
+we can choose \(\mu_{n + 1} \in M\) such that \(\mu_{n + 1}(K_n^c) \ge \epsilon\). Consequently,
+\[\mu_{n + 1}(K_n^c) - \mu_m(K_n^c) \ge \epsilon - \frac{\epsilon}{2} = \frac{\epsilon}{2}\]
+as desired.
 
-    <p class="BodyText">
-        To conclude, we remark the following criterion for strong tightness.
-    </p>
+\qed
 
-    <p class="BodyText">
-        <b>Proposition.</b>
-        Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Suppose that there exists a measure
-        \(\nu \in \mathcal{M}(X)\) and \(g \in L^1(\nu)\) such that for all \(\mu \in M\), \(\mu \ll \nu\)
-        and \(d \mu / d \nu \le g\). Then, \(M\) is strongly tight.
-    </p>
+To conclude, we remark the following criterion for strong tightness.
 
-    <p class="BodyText">
-        <i>Proof.</i>
-        Define \(\eta \in \mathcal{M}(X)\) by \(d \eta = \frac{g}{\|g\|_{L^1(\nu)}} d \nu\). Then, for
-        all \(\epsilon > 0\) and \(f : X \to \mathbb{R}\) bounded measurable, there exists some compact
-        set \(K\) such that \(f\) is continuous on \(K\) and \(\eta(K^c) \le \|g\|_{L^1(\nu)}^{-1}\epsilon\).
-        Then, for all \(\mu \in M\), we have that
-        \[\mu(K^c) = \int_{K^c} \frac{d \mu}{d \nu} d \nu \le \int_{K^c} g d \nu
-            = \|g\|_{L^1(\nu)}\eta(K^c) \le \epsilon\]
-        as desired.
-    </p>
+\textbf{Proposition.}
+Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Suppose that there exists a measure
+\(\nu \in \mathcal{M}(X)\) and \(g \in L^1(\nu)\) such that for all \(\mu \in M\), \(\mu \ll \nu\)
+and \(d \mu / d \nu \le g\). Then, \(M\) is strongly tight.
 
-    <p class="BodyText" style="text-align: right">🎉</p>
+\textit{Proof.}
+Define \(\eta \in \mathcal{M}(X)\) by \(d \eta = \frac{g}{\|g\|_{L^1(\nu)}} d \nu\). Then, for
+all \(\epsilon > 0\) and \(f : X \to \mathbb{R}\) bounded measurable, there exists some compact
+set \(K\) such that \(f\) is continuous on \(K\) and \(\eta(K^c) \le \|g\|_{L^1(\nu)}^{-1}\epsilon\).
+Then, for all \(\mu \in M\), we have that
+\[\mu(K^c) = \int_{K^c} \frac{d \mu}{d \nu} d \nu \le \int_{K^c} g d \nu
+    = \|g\|_{L^1(\nu)}\eta(K^c) \le \epsilon\]
+as desired.
 
-    <p class="BodyText">
-        Consequently, recall that if \((\mu_n) \subseteq \mathcal{M}(X)\) is a sequence of measures
-        which are absolutely continuous with respect to some \(\nu \in \mathcal{M}(X)\), then \(\mu_n\)
-        converges to \(\mu\) in total variation if and only if \(d \mu_n / d \nu \to d \mu / d \nu\)
-        in \(L^1\). Thus, the above allows us to recover the dominated convergence theorem.
-    </p>
+\qed
+
+Consequently, recall that if \((\mu_n) \subseteq \mathcal{M}(X)\) is a sequence of measures
+which are absolutely continuous with respect to some \(\nu \in \mathcal{M}(X)\), then \(\mu_n\)
+converges to \(\mu\) in total variation if and only if \(d \mu_n / d \nu \to d \mu / d \nu\)
+in \(L^1\). Thus, the above allows us to recover the dominated convergence theorem.
+
+\end{document}

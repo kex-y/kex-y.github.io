@@ -85,6 +85,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 <p class="Section" id="disjoint-mutsig"> 
     <i>19 Oct. 2024.</i> Disjointness and Mutually Singular</p>
 
+
     <p class="BodyText">
         For an ordered set \((X, \le)\), we say \(x, y \in X\) are disjoint if for any \(z \le x\) and \(z \le y\),
         we have that \(z = \perp\). Rémy Degenne on the Lean Zulip observed that, in the case of \(\sigma\)-finite measures,
@@ -98,7 +99,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         For a measurable space \((X, \Sigma)\) and two measures \(\mu, \nu\) on \((X, \Sigma)\), we define
         the measure \(\mu \wedge \nu\) by
         \[(\mu \wedge \nu)(S) = \inf \{\mu(S \cap T) + \nu(S \cap T^c) \mid T \in \Sigma\}.\]
-        It is a standard exercise to check that this is indeed a <it>bona-fide</it> measure and that
+        It is a standard exercise to check that this is indeed a <i>bona-fide</i> measure and that
         \(\mu \wedge \nu \le \mu\) and \(\mu \wedge \nu \le \nu\).
     </p>
 
@@ -109,7 +110,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         Thus, denoting \(S^\epsilon = \bigcap_{n \in \mathbb{N}} S_n^\epsilon\), we have that
         \(\mu(S^\epsilon) = 0\) and
         \[\nu((S^\epsilon)^c) = \nu\left(\bigcup_{n \in \mathbb{N}} (S_n^\epsilon)^c\right)
-            \le \sum_{n \in \mathbb{N}}\epsilon 2^{-n} = \epsilon.\]
+        \le \sum_{n \in \mathbb{N}}\epsilon 2^{-n} = \epsilon.\]
         Finally, taking \(S = \bigcup_{n \in \mathbb{N}} S^{1 / n}\),
         \(\mu(S) = 0\) as \(S\) is a countable union of \(\mu\)-null-sets while
         \[\nu(S^c) = \nu\left(\bigcap_{n \in \mathbb{N}} (S^{1 / n})^c\right) \le \frac{1}{k}\]
@@ -119,6 +120,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <p class="Section" id="cameron-martin"> 
     <i>15 May. 2024.</i> An Application of the Cameron-Martin Theorem</p>
+
 
     <p class="BodyText">
         The Cameron-Martin theorem provides a characterization of the Gaussian measure on infinite dimensional
@@ -181,6 +183,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <p class="Section" id="precompact">
     <i>7 Mar. 2024.</i> &ensp; Precompactness in the Total Variational Topology</p>
+
 
     <p class="BodyText">
         There is the following classical result which relates the Wasserstein distance to the weak
@@ -254,18 +257,18 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         \[\int d(x, y) \Pi_n(d x, d y) \to 0.\]
         So,
         \[0 \leftarrow \int d(x, y) \Pi_n(d x, d y) \ge \int_{\Delta_\delta^c \cap K^2} d(x, y) \Pi_n(d x, d y)
-            \ge \delta \Pi_n(\Delta_\delta^c \cap K^2) \ge 0\]
+        \ge \delta \Pi_n(\Delta_\delta^c \cap K^2) \ge 0\]
         implying \(\Pi_n(\Delta_\delta^c \cap K^2) < \epsilon\) for sufficiently large \(n\). Thus, for sufficiently large \(n\),
         we have that
         \begin{align*}
-            \left|\int f d \mu_n - \int f d \mu\right|
-            & = \left|\int (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
-            & \le \left|\int_{\Delta_\delta} (f(x) - f(y)) \Pi_n(d x, d y)\right|
-            + \left|\int_{\Delta_\delta^c \cap K^2} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
-            & + \left|\int_{X \times K^c} (f(x) - f(y)) \Pi_n(d x, d y)\right| +
-            \left|\int_{K^c \times X} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
-            & \le \epsilon + 2|f|_\infty \epsilon + 2|f|_\infty \mu_n(X)\mu(K^c) + 2|f|_\infty \mu_n(K^c)\mu(K)\\
-            & \le \epsilon(1 + 6|f|_\infty).
+        \left|\int f d \mu_n - \int f d \mu\right|
+        & = \left|\int (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
+        & \le \left|\int_{\Delta_\delta} (f(x) - f(y)) \Pi_n(d x, d y)\right|
+        + \left|\int_{\Delta_\delta^c \cap K^2} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
+        & + \left|\int_{X \times K^c} (f(x) - f(y)) \Pi_n(d x, d y)\right| +
+        \left|\int_{K^c \times X} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
+        & \le \epsilon + 2|f|_\infty \epsilon + 2|f|_\infty \mu_n(X)\mu(K^c) + 2|f|_\infty \mu_n(K^c)\mu(K)\\
+        & \le \epsilon(1 + 6|f|_\infty).
         \end{align*}
     </p>
 
@@ -288,7 +291,6 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
     <p class="BodyText">
         In any case, this provides a characterization of precompactness in the total variational topology.
-
     </p>
 
     <p class="BodyText">
@@ -348,7 +350,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         set \(K\) such that \(f\) is continuous on \(K\) and \(\eta(K^c) \le \|g\|_{L^1(\nu)}^{-1}\epsilon\).
         Then, for all \(\mu \in M\), we have that
         \[\mu(K^c) = \int_{K^c} \frac{d \mu}{d \nu} d \nu \le \int_{K^c} g d \nu
-            = \|g\|_{L^1(\nu)}\eta(K^c) \le \epsilon\]
+        = \|g\|_{L^1(\nu)}\eta(K^c) \le \epsilon\]
         as desired.
     </p>
 
@@ -363,6 +365,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <p class="Section" id="random-compact">
     <i>27 Oct. 2023.</i> &ensp; Random Compact Sets in Polish Spaces</p>
+
 
     <p class="BodyText">
         Here is a fun puzzle:
@@ -388,6 +391,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <p class="Section" id="order-connected">
     <i>30 Jul. 2022.</i> &ensp; Order Connected Sets are Measurable in \(\mathbb{R}^n\)</p>
+
 
     <p class="BodyText">
         Yaël Dillies was reading a book by Bollobas in which he claimed without proof that an order connected set (with respect to the pointwise ordering)
@@ -434,7 +438,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         \[\partial S^+ \subseteq \{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}\]
         where
         \[d(x) := \lim_{\epsilon \to 0} d_\epsilon(x) = \lim_{\epsilon \to 0}
-            \frac{\text{Leb}(\overline{S^+} \cap B_\epsilon(x))}{\text{Leb}(B_\epsilon(x))}\]
+        \frac{\text{Leb}(\overline{S^+} \cap B_\epsilon(x))}{\text{Leb}(B_\epsilon(x))}\]
         as \(\overline{S^+}\) is closed and hence measurable, the Lebesgue density theorem tells us
         \[\text{Leb}(\partial S^+) \le \text{Leb}(\{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}) = 0.\]
     </p>
@@ -454,6 +458,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <p class="Section" id="order-topology">
     <i>3 Apr. 2022.</i> &ensp; Preorder Cannot Generate the Cofinite Topology on Infinite Sets</p>
+
 
     <p class="BodyText">
         Kevin Buzzard asked on Discord whether or not
@@ -489,6 +494,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         <b>Proposition.</b>
         Given a infinite set \(X\), there does not exist a preorder on \(X\) which generates the cofinite topology.
     </p>
+
     <p class="BodyText">
         <i>Proof.</i>
         Suppose there exists a preorder \((\le)\) with the associated strict order \((<)\) such that the order topology generated by it is the same as the cofinite
@@ -510,4 +516,6 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         Hence, \(\{z \mid x < z\}\) and \(\{z \mid z < x\}\) is empty for all but finitely many \(x\). But then, the topology generated by
         the preorder has a finite base, implying only finitely many sets are open which is a contradiction.
     </p>
+
     <p class="BodyText" style="text-align: right">🎉</p>
+

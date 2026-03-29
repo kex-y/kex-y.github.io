@@ -2,65 +2,56 @@
 % title: Order Connected Sets are Measurable in \(\mathbb{R}^n\)
 % date: 30 Jul. 2022
 
-    <p class="BodyText">
-        Yaël Dillies was reading a book by Bollobas in which he claimed without proof that an order connected set (with respect to the pointwise ordering)
-        in \(\mathbb{R}^n\) is measurable. Yaël asked on Discord if anyone knows how to prove it. This short note contains my proof of this fact.
-    </p>
+\documentclass{article}
+\usepackage{amsmath, amssymb}
 
-    <p class="BodyText">
-        <b>Definition.</b>
-        Given a partially ordered set \((X, (\le))\), \(S \subseteq X\) is said to be order connected if for all \(x, y \in S\),
-        \[[x, y] := \{z \mid x \le z \le y\} \subseteq S.\]
-    </p>
+\begin{document}
 
-    <p class="BodyText">
-        Equipping \(\mathbb{R}^n\) with the point-wise ordering (i.e. for
-        \(x := (x_i)_{i = 1}^n,  y := (y_i)_{i = 1}^n \in \mathbb{R}^n\), \(x \le y\) if and only if
-        \(x_n \le y_n\) for all \(n = 1, \cdots, n\)), \(\mathbb{R}^n\) form a partially ordered set and we
-        can therefore talk about its order connected subsets.
-    </p>
+Yaël Dillies was reading a book by Bollobas in which he claimed without proof that an order connected set (with respect to the pointwise ordering)
+in \(\mathbb{R}^n\) is measurable. Yaël asked on Discord if anyone knows how to prove it. This short note contains my proof of this fact.
 
-    <p class="BodyText">
-        <b>Theorem.</b>
-        \(S \subseteq \mathbb{R}^n\) is Lebesgue measurable if \(S\) is order connected with respect to the
-        point-wise ordering on \(\mathbb{R}^n\).
-    </p>
+\textbf{Definition.}
+Given a partially ordered set \((X, (\le))\), \(S \subseteq X\) is said to be order connected if for all \(x, y \in S\),
+\[[x, y] := \{z \mid x \le z \le y\} \subseteq S.\]
 
-    <p class="BodyText">
-        <i>Proof.</i>
-        Defining \(S^+ := \{x \mid \exists \ y \in S, y \le x\}\) and \(S^- := \{x \mid \exists \ y \in s, x \le y\}\), we
-        observe \(S = S^+ \cap S^-\). Therefore, it is sufficient to show that \(S^+\) and \(S^-\) are measurable.
-        We will show measurability for \(S^+\) while the case for \(S^-\) is similar.
-    </p>
+Equipping \(\mathbb{R}^n\) with the point-wise ordering (i.e. for
+\(x := (x_i)_{i = 1}^n,  y := (y_i)_{i = 1}^n \in \mathbb{R}^n\), \(x \le y\) if and only if
+\(x_n \le y_n\) for all \(n = 1, \cdots, n\)), \(\mathbb{R}^n\) form a partially ordered set and we
+can therefore talk about its order connected subsets.
 
-    <p class="BodyText">
-        It is clear that for all \(x \in \mathbb{R}^n\), \(\{x\}^+\) is measurable. So, defining \(Q := S^+ \cap \mathbb{Q}^n\),
-        \[Q^+ = \bigcup_{q \in Q} \{q\}^+ \subseteq S^+\]
-        is measurable. Furthermore, \(S^+ \setminus Q^+ \subseteq \partial S^+\) since for all \(x \in S^\circ\), there exists some
-        open neighborhood \(B \subseteq S^\circ\) of \(x\); so, as \(Q\) is dense in \(S^+\), there exists an element
-        \(q \in Q \cap B\) such that \(q \le x\) and hence, \(x \in \{q\}^+ \subseteq Q^+\). Now, as the Lebesgue \(\sigma\)-algebra is
-        complete and \(S^+ = Q^+ \cup (S^+ \setminus Q^+)\), it suffices to show that \(\partial S^+\) is a null-set.
-    </p>
+\textbf{Theorem.}
+\(S \subseteq \mathbb{R}^n\) is Lebesgue measurable if \(S\) is order connected with respect to the
+point-wise ordering on \(\mathbb{R}^n\).
 
-    <p class="BodyText">
-        To show \(\text{Leb}(\partial S^+) = 0\) we will invoke the Lebesgue density theorem. Namely, by showing
-        \[\partial S^+ \subseteq \{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}\]
-        where
-        \[d(x) := \lim_{\epsilon \to 0} d_\epsilon(x) = \lim_{\epsilon \to 0}
-            \frac{\text{Leb}(\overline{S^+} \cap B_\epsilon(x))}{\text{Leb}(B_\epsilon(x))}\]
-        as \(\overline{S^+}\) is closed and hence measurable, the Lebesgue density theorem tells us
-        \[\text{Leb}(\partial S^+) \le \text{Leb}(\{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}) = 0.\]
-    </p>
+\textit{Proof.}
+Defining \(S^+ := \{x \mid \exists \ y \in S, y \le x\}\) and \(S^- := \{x \mid \exists \ y \in s, x \le y\}\), we
+observe \(S = S^+ \cap S^-\). Therefore, it is sufficient to show that \(S^+\) and \(S^-\) are measurable.
+We will show measurability for \(S^+\) while the case for \(S^-\) is similar.
 
-    <p class="BodyText">
-        Indeed, for all \(x \in \partial S^+, \epsilon > 0\), \(\overline{S^+} \cap B_\epsilon(x)\) must contain
-        the with the right-upper quadrant of the ball by the very definition of \(S^+\), implying
-        \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \gtrapprox 2^{-n} \text{Leb}(B_\epsilon(x))\) bounding
-        \(d(x)\) from below. Similarly, \(\overline{S^+}^c \cap B_\epsilon(x)\) must contain the left-bottom
-        quadrant of the ball as otherwise \(x\) is contained by some \(\{y\}^+\) for some \(y \in \overline{S}^+\)
-        contradicting \(x \in \partial S^+\). Hence, \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \lessapprox
-        (1 - 2^{-n}) \text{Leb}(B_\epsilon(x))\) bounding \(d(x)\) from above and so, proving the required
-        inclusion.
-    </p>
+It is clear that for all \(x \in \mathbb{R}^n\), \(\{x\}^+\) is measurable. So, defining \(Q := S^+ \cap \mathbb{Q}^n\),
+\[Q^+ = \bigcup_{q \in Q} \{q\}^+ \subseteq S^+\]
+is measurable. Furthermore, \(S^+ \setminus Q^+ \subseteq \partial S^+\) since for all \(x \in S^\circ\), there exists some
+open neighborhood \(B \subseteq S^\circ\) of \(x\); so, as \(Q\) is dense in \(S^+\), there exists an element
+\(q \in Q \cap B\) such that \(q \le x\) and hence, \(x \in \{q\}^+ \subseteq Q^+\). Now, as the Lebesgue \(\sigma\)-algebra is
+complete and \(S^+ = Q^+ \cup (S^+ \setminus Q^+)\), it suffices to show that \(\partial S^+\) is a null-set.
 
-    <p class="BodyText" style="text-align: right">🎉</p>
+To show \(\text{Leb}(\partial S^+) = 0\) we will invoke the Lebesgue density theorem. Namely, by showing
+\[\partial S^+ \subseteq \{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}\]
+where
+\[d(x) := \lim_{\epsilon \to 0} d_\epsilon(x) = \lim_{\epsilon \to 0}
+    \frac{\text{Leb}(\overline{S^+} \cap B_\epsilon(x))}{\text{Leb}(B_\epsilon(x))}\]
+as \(\overline{S^+}\) is closed and hence measurable, the Lebesgue density theorem tells us
+\[\text{Leb}(\partial S^+) \le \text{Leb}(\{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}) = 0.\]
+
+Indeed, for all \(x \in \partial S^+, \epsilon > 0\), \(\overline{S^+} \cap B_\epsilon(x)\) must contain
+the with the right-upper quadrant of the ball by the very definition of \(S^+\), implying
+\(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \gtrapprox 2^{-n} \text{Leb}(B_\epsilon(x))\) bounding
+\(d(x)\) from below. Similarly, \(\overline{S^+}^c \cap B_\epsilon(x)\) must contain the left-bottom
+quadrant of the ball as otherwise \(x\) is contained by some \(\{y\}^+\) for some \(y \in \overline{S}^+\)
+contradicting \(x \in \partial S^+\). Hence, \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \lessapprox
+(1 - 2^{-n}) \text{Leb}(B_\epsilon(x))\) bounding \(d(x)\) from above and so, proving the required
+inclusion.
+
+\qed
+
+\end{document}
