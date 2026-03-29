@@ -6,6 +6,14 @@
     font-family: CMB;
     src: url(../fonts/cmuserif_bold_macroman/cmunbx-webfont.woff);
   }
+  @font-face {
+    font-family: CMI;
+    src: url(../fonts/cmuserif_oblique_macroman/cmunti-webfont.woff);
+  }
+  @font-face {
+    font-family: CMBI;
+    src: url(../fonts/cmuserif_boldoblique_macroman/cmunbi-webfont.woff);
+  }
 
 
 .LatexTitle{
@@ -122,6 +130,41 @@
     margin-bottom: 45px;
     line-height: 125%;
     column-count: 3;
+}
+
+.theorem-env {
+    font-family: CMI;
+    font-size: 23px;
+    text-align: Left;
+    margin-top: 13px;
+    margin-bottom: 20px;
+    line-height: 125%;
+}
+
+.theorem-env .env-label {
+    font-family: CMBI;
+}
+
+.proof-env {
+    font-family: CMR;
+    font-size: 23px;
+    text-align: Left;
+    margin-top: 13px;
+    margin-bottom: 20px;
+    line-height: 125%;
+}
+
+.proof-env .env-label {
+    font-family: CMI;
+}
+
+.proof-end {
+    font-family: CMR;
+    font-size: 23px;
+    text-align: right;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    line-height: 125%;
 }
 
 .Justified{

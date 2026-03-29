@@ -10,20 +10,22 @@
 Yaël Dillies was reading a book by Bollobas in which he claimed without proof that an order connected set (with respect to the pointwise ordering)
 in \(\mathbb{R}^n\) is measurable. Yaël asked on Discord if anyone knows how to prove it. This short note contains my proof of this fact.
 
-\textbf{Definition.}
+\begin{definition}
 Given a partially ordered set \((X, (\le))\), \(S \subseteq X\) is said to be order connected if for all \(x, y \in S\),
 \[[x, y] := \{z \mid x \le z \le y\} \subseteq S.\]
+\end{definition}
 
 Equipping \(\mathbb{R}^n\) with the point-wise ordering (i.e. for
 \(x := (x_i)_{i = 1}^n,  y := (y_i)_{i = 1}^n \in \mathbb{R}^n\), \(x \le y\) if and only if
 \(x_n \le y_n\) for all \(n = 1, \cdots, n\)), \(\mathbb{R}^n\) form a partially ordered set and we
 can therefore talk about its order connected subsets.
 
-\textbf{Theorem.}
+\begin{theorem}
 \(S \subseteq \mathbb{R}^n\) is Lebesgue measurable if \(S\) is order connected with respect to the
 point-wise ordering on \(\mathbb{R}^n\).
+\end{theorem}
 
-\textit{Proof.}
+\begin{proof}
 Defining \(S^+ := \{x \mid \exists \ y \in S, y \le x\}\) and \(S^- := \{x \mid \exists \ y \in s, x \le y\}\), we
 observe \(S = S^+ \cap S^-\). Therefore, it is sufficient to show that \(S^+\) and \(S^-\) are measurable.
 We will show measurability for \(S^+\) while the case for \(S^-\) is similar.
@@ -52,6 +54,6 @@ contradicting \(x \in \partial S^+\). Hence, \(\text{Leb}(\overline{S^+} \cap B_
 (1 - 2^{-n}) \text{Leb}(B_\epsilon(x))\) bounding \(d(x)\) from above and so, proving the required
 inclusion.
 
-\qed
+\end{proof}
 
 \end{document}

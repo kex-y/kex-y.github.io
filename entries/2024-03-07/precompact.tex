@@ -3,7 +3,10 @@
 % date: 7 Mar. 2024
 
 \documentclass{article}
-\usepackage{amsmath, amssymb}
+\usepackage{amsmath, amssymb, amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
 
 \begin{document}
 
@@ -29,10 +32,11 @@ and take \(\mu \in \mathcal{M}(X)\) (so \(\mu\) is automatically a Radon measure
 a bounded measurable function and \(\epsilon > 0\). Then, there exists a compact set \(K \subseteq X\)
 such that \(f\) is continuous on \(K\) and \(\mu(K) \ge 1 - \epsilon\). This motivates the following definition.
 
-\textbf{Definition.}
+\begin{definition}
 Given a set of measures \(M \subseteq \mathcal{M}(X)\), we say that \(M\) is strongly tight if for all
 \(f : X \to \mathbb{R}\) bounded measurable and \(\epsilon > 0\), there exists a compact set \(K \subseteq X\)
 such that \(f\) is continuous on \(K\) and for all \(\mu \in M\), \(\mu(K) \ge 1 - \epsilon\).
+\end{definition}
 
 We remark that, by applying Lusin's theorem to \(\epsilon / n\), it is clear that any finite family of measures
 is automatically strongly tight. Moreover, we see that if \(\mu_n \to \mu\) in total variation, then
@@ -42,11 +46,12 @@ is automatically strongly tight. Moreover, we see that if \(\mu_n \to \mu\) in t
 By slightly modifying the proof of convergence in Wasserstein distance implies weak convergence, we observe the following
 relation between convergence in Wasserstein distance and convergence in total variation.
 
-\textbf{Proposition.}
+\begin{proposition}
 Let \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\).
 Then, \(\mu_n \to \mu\) in total variation if and only if \((\mu_n)_n\) is strongly tight and \(d_1(\mu_n, \mu) \to 0\).
+\end{proposition}
 
-\textit{Proof.}
+\begin{proof}
 The forward direction is obvious so we only prove the reverse. Suppose that \((\mu_n)_n\) is strongly tight
 and \(d_1(\mu_n, \mu) \to 0\). Then, taking \(f : X \to \mathbb{R}\) be a bounded measurable function,
 we will show that
@@ -75,8 +80,7 @@ we have that
 \end{align*}
 
 Consequently, taking \(\epsilon \to 0\) gives the desired limit.
-
-\qed
+\end{proof}
 
 Alternatively, one can also obtain the above by using the equivalence of weak convergence and convergence
 is Wasserstein distance. In particular,
@@ -89,11 +93,12 @@ given weak convergence.
 
 In any case, this provides a characterization of precompactness in the total variational topology.
 
-\textbf{Proposition.}
+\begin{proposition}
 Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Then \(M\) is strongly tight if and only if it is
 precompact in the total variational topology.
+\end{proposition}
 
-\textit{Proof.}
+\begin{proof}
 The forward direction is simple. Indeed, if \(M\) is strongly tight, then it is tight and so any sequence
 of measures \((\mu_n)\) in \(M\) has a weakly convergent subsequence \(\mu_{n_k} \to \mu \in \mathcal{M}(X)\).
 However, as \((\mu_{n_k})\) is also strongly tight, the previous lemma show that this convergence
@@ -117,17 +122,17 @@ and for all \(m \le n\), \(\mu_m(K_n^c) \le \epsilon / 2\). Then, by the lack of
 we can choose \(\mu_{n + 1} \in M\) such that \(\mu_{n + 1}(K_n^c) \ge \epsilon\). Consequently,
 \[\mu_{n + 1}(K_n^c) - \mu_m(K_n^c) \ge \epsilon - \frac{\epsilon}{2} = \frac{\epsilon}{2}\]
 as desired.
-
-\qed
+\end{proof}
 
 To conclude, we remark the following criterion for strong tightness.
 
-\textbf{Proposition.}
+\begin{proposition}
 Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Suppose that there exists a measure
 \(\nu \in \mathcal{M}(X)\) and \(g \in L^1(\nu)\) such that for all \(\mu \in M\), \(\mu \ll \nu\)
 and \(d \mu / d \nu \le g\). Then, \(M\) is strongly tight.
+\end{proposition}
 
-\textit{Proof.}
+\begin{proof}
 Define \(\eta \in \mathcal{M}(X)\) by \(d \eta = \frac{g}{\|g\|_{L^1(\nu)}} d \nu\). Then, for
 all \(\epsilon > 0\) and \(f : X \to \mathbb{R}\) bounded measurable, there exists some compact
 set \(K\) such that \(f\) is continuous on \(K\) and \(\eta(K^c) \le \|g\|_{L^1(\nu)}^{-1}\epsilon\).
@@ -135,8 +140,7 @@ Then, for all \(\mu \in M\), we have that
 \[\mu(K^c) = \int_{K^c} \frac{d \mu}{d \nu} d \nu \le \int_{K^c} g d \nu
     = \|g\|_{L^1(\nu)}\eta(K^c) \le \epsilon\]
 as desired.
-
-\qed
+\end{proof}
 
 Consequently, recall that if \((\mu_n) \subseteq \mathcal{M}(X)\) is a sequence of measures
 which are absolutely continuous with respect to some \(\nu \in \mathcal{M}(X)\), then \(\mu_n\)

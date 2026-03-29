@@ -14,6 +14,27 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <p class="Section">Contents</p>
 
+<a href="#measure-subseq">
+    <div class="Contents">
+        Measure of subsequences
+    </div>
+    <div class="ContentsRight">
+        05 Mar. 2026
+    </div>
+</a>
+
+<p>
+<a href="#recurrence">
+    <div class="Contents">
+        Recurrence of planar Brownian motion
+    </div>
+    <div class="ContentsRight">
+        05 Mar. 2026
+    </div>
+</a>
+</p>
+
+<p>
 <a href="#disjoint-mutsig">
     <div class="Contents">
         Disjointness and Mutually Singular
@@ -22,6 +43,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         19 Oct. 2024
     </div>
 </a>
+</p>
 
 <p>
 <a href="#cameron-martin">
@@ -82,8 +104,98 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <div class="spacer"></div>
 
-<p class="Section" id="disjoint-mutsig"> 
-    <i>19 Oct. 2024.</i> Disjointness and Mutually Singular</p>
+<p class="Section" id="measure-subseq"> 
+    <i>05 Mar. 2026.</i> Measure of subsequences</p>
+
+
+    <p class="BodyText">
+        Here's a fun measure theory puzzle I came up with and I'm keeping track of it here in case I'm ever
+        asked to come up with measure theory exam questions :)
+    </p>
+
+    <p class="BodyText">
+        For any sequence of \((x_n)_{n \in \mathbb{N}}\) with \(x_n \in \{0, 1, \dots, 9\}\) for any \(n \in \mathbb{N}\),
+        we define the set
+        \[S((x_n)) := \{0.a_1a_2a_3\ldots \in [0, 1] : (a_n) \text{ is a subsequence of } (x_n)\}.\]
+        Then, does there exists a sequence \((x_n)\) such that \(S((x_n))\) has non-trivial measure (i.e. not zero nor one)?
+    </p>
+
+    <p class="BodyText">
+        Of course, this question is only meaningful if the sets \(S((x_n))\) are measurable. So a complete
+        answer will need to consider this also.
+    </p>
+
+<p class="Section" id="recurrence"> 
+    <i>05 Mar. 2026.</i> Recurrence of planar Brownian motion</p>
+
+
+    <p class="BodyText">
+        I first saw the recurrence (in small balls) property of planar Brownian motion a couple years ago during
+        the Advanced Probability course offered by Part III. The proof I saw was of course (I believe) the
+        standard approach in which one uses the fact that the Brownian motion composed with any harmonic function
+        remains to be a martingale. In particular, by using the logarithm, this fact (and the optional stopping theorem)
+        allows us to easily compute the probability that
+        the Brownian motion hits a small ball before hitting a larger one. Thus, by taking the radius of the
+        larger ball to infinity, we finds that the Brownian motion hits the small ball with probability one.
+    </p>
+
+    <p class="BodyText">
+        This problem came up again recently during the exercise session of the Random Geometry course offered
+        here at EPFL and, in an attempt at avoiding martingale techniques, Colin Piernot and I (mostly Colin)
+        found a clever proof of this the sketch of which I would like to share here.
+    </p>
+
+    <p class="theorem-env">
+        <span class="env-label">Theorem.</span>
+        Let \(B_t\) be a complex Brownian motion and \(z\) be a point in the complex plane. Then, for any
+        \(\epsilon > 0\), we have that
+        \[\mathbb{P}(|B_t - z| < \epsilon \text{ i.o.}) = 1.\]
+    </p>
+
+    <p class="proof-env">
+        <span class="env-label">Proof.</span>
+        By translation, we my assume without loss of generality that \(z = 0\) and the Brownian motions
+        starts at \(1\).
+    </p>
+
+    <p class="proof-env">
+        Let us define the following continuous time random walk \(X_t\) on \(\mathbb{Z}\):
+        Defining \(\tau_0 = 0\)
+        \[\tau_{n + 1} := \inf\{t > \tau_n : |B_t| \in 2^{\mathbb{Z}}\}\]
+        we set \(X_t = \log_2 |B_{\tau_n}|\) whenever \(t \in [\tau_n, \tau_{n + 1})\). Namely,
+        \(X_t\) is the continuous time random walk which moves to \(n\) whenever the Brownian motion
+        hits the circle of radius \(2^n\). Thus, as hitting the \(\epsilon\)-ball centered at the origin
+        corresponds to \(X_t\) hitting \(n\) for any \(n \in \mathbb{Z}\) satisfying \(2^n < \epsilon\),
+        it follows that the conclusion holds if we can show that \(X_t\) is symmetric (and so, is transient).
+    </p>
+
+    <p class="proof-env">
+        Straightaway, by scaling invariance and the strong Markov property, it suffices to show that
+        \[\mathbb{P}(X_1 = 0) = \mathbb{P}(X_1 = 2) = \frac{1}{2}.\]
+        Namely, we need to show that \(B_t\) hits the circle of radius \(1/2\) before the circle of
+        radius \(2\) with probability \(1/2\).
+        However, this is clear as, the map
+        \[f : A \to A : z \mapsto \frac{1}{z}\]
+        with \(A\) being the annulus \(\{z \in \mathbb{C} : 1/2 \le |z| \le 2\}\) is conformal. Thus,
+        as \(f\) maps the boundary \(\{|z| = 2\}\) to \(\{|z| = 1/2\}\) and \(f(B_t)\) is also a Brownian
+        motion starting at 1 (by the conformal invariance of Brownian motion), the conclusion holds
+        by symmetry.
+    </p>
+
+    <p class="proof-end">□</p>
+
+    <p class="BodyText">
+        Interestingly (or maybe not so considering the topic of the course), this type of argument also
+        appeared later in the Random Geometry course in the probabilistic proof of the Picards little theorem.
+        There, starting with the Brownian motion's image over a conformal map, one similarly constructs a
+        random walk on \(\mathbb{Z}^2\) (albeit here the construction is much more complicated with a lot
+        of nuances. In particular, here the random walk is associated with the winding number of the trace
+        quotiented by an equivalence relation in order to obtain integrability). Then, by showing that this
+        radom walk is transient, one is able to conclude the theorem.
+    </p>
+
+<p class="Section" id="disjoint-mutsig">
+    <i>19 Oct. 2024.</i> &ensp; Disjointness and Mutually Singular</p>
 
 
     <p class="BodyText">
@@ -118,8 +230,8 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         as required.
     </p>
 
-<p class="Section" id="cameron-martin"> 
-    <i>15 May. 2024.</i> An Application of the Cameron-Martin Theorem</p>
+<p class="Section" id="cameron-martin">
+    <i>15 May. 2024.</i> &ensp; An Application of the Cameron-Martin Theorem</p>
 
 
     <p class="BodyText">
@@ -133,8 +245,8 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         The Cameron-Martin theorem is the following.
     </p>
 
-    <p class="BodyText">
-        <b>Theorem.</b>
+    <p class="theorem-env">
+        <span class="env-label">Theorem.</span>
         Let \(\mu \in \mathcal{M}(X)\) be a Gaussian and denote \(\mathcal{H}_\mu\) for its Cameron-Martin space.
         For \(h \in X\), denoting \(\tau_h : x \in X \mapsto x + h\), we have that \(\tau_h^* \mu \ll \mu\) if and only
         if \(h \in \mathcal{H}_\mu\). In this case,
@@ -215,8 +327,8 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         such that \(f\) is continuous on \(K\) and \(\mu(K) \ge 1 - \epsilon\). This motivates the following definition.
     </p>
 
-    <p class="BodyText">
-        <b>Definition.</b>
+    <p class="theorem-env">
+        <span class="env-label">Definition.</span>
         Given a set of measures \(M \subseteq \mathcal{M}(X)\), we say that \(M\) is strongly tight if for all
         \(f : X \to \mathbb{R}\) bounded measurable and \(\epsilon > 0\), there exists a compact set \(K \subseteq X\)
         such that \(f\) is continuous on \(K\) and for all \(\mu \in M\), \(\mu(K) \ge 1 - \epsilon\).
@@ -234,14 +346,14 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         relation between convergence in Wasserstein distance and convergence in total variation.
     </p>
 
-    <p class="BodyText">
-        <b>Proposition.</b>
+    <p class="theorem-env">
+        <span class="env-label">Proposition.</span>
         Let \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\).
         Then, \(\mu_n \to \mu\) in total variation if and only if \((\mu_n)_n\) is strongly tight and \(d_1(\mu_n, \mu) \to 0\).
     </p>
 
-    <p class="BodyText">
-        <i>Proof.</i>
+    <p class="proof-env">
+        <span class="env-label">Proof.</span>
         The forward direction is obvious so we only prove the reverse. Suppose that \((\mu_n)_n\) is strongly tight
         and \(d_1(\mu_n, \mu) \to 0\). Then, taking \(f : X \to \mathbb{R}\) be a bounded measurable function,
         we will show that
@@ -251,7 +363,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         for all \(x, y \in \Delta_\delta := \{(x, y) \in K^2 : d(x, y) < \delta\}\), we have \(|f(x) - f(y)| < \epsilon\).
     </p>
 
-    <p class="BodyText">
+    <p class="proof-env">
         Moreover, since \(d_1(\mu_n, \mu) \to 0\), there exists a sequence of couplings
         \(\Pi_n \in \mathcal{C}(\mu_n, \mu)\) such that
         \[\int d(x, y) \Pi_n(d x, d y) \to 0.\]
@@ -272,11 +384,11 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         \end{align*}
     </p>
 
-    <p class="BodyText">
+    <p class="proof-env">
         Consequently, taking \(\epsilon \to 0\) gives the desired limit.
     </p>
 
-    <p class="BodyText" style="text-align: right">🎉</p>
+    <p class="proof-end">□</p>
 
     <p class="BodyText">
         Alternatively, one can also obtain the above by using the equivalence of weak convergence and convergence
@@ -293,14 +405,14 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         In any case, this provides a characterization of precompactness in the total variational topology.
     </p>
 
-    <p class="BodyText">
-        <b>Proposition.</b>
+    <p class="theorem-env">
+        <span class="env-label">Proposition.</span>
         Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Then \(M\) is strongly tight if and only if it is
         precompact in the total variational topology.
     </p>
 
-    <p class="BodyText">
-        <i>Proof.</i>
+    <p class="proof-env">
+        <span class="env-label">Proof.</span>
         The forward direction is simple. Indeed, if \(M\) is strongly tight, then it is tight and so any sequence
         of measures \((\mu_n)\) in \(M\) has a weakly convergent subsequence \(\mu_{n_k} \to \mu \in \mathcal{M}(X)\).
         However, as \((\mu_{n_k})\) is also strongly tight, the previous lemma show that this convergence
@@ -308,7 +420,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         subsequence in total variation which implies that \(M\) is precompact.
     </p>
 
-    <p class="BodyText">
+    <p class="proof-env">
         For the converse, we will prove the contrapositive, i.e. not strongly tight implies the existence of a sequence
         of measures which does not have a convergence subsequence. In particular, we will construct a sequence of measures
         \((\mu_n) \subseteq M\) and compact sets \((K_n)\) such that for all \(m < n\),
@@ -318,7 +430,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         convergence subsequence.
     </p>
 
-    <p class="BodyText">
+    <p class="proof-env">
         Assuming \(M\) is not strongly tight, then there exists some \(\epsilon > 0\) and a bounded measurable
         function \(f : X \to \mathbb{R}\) such that for all compact sets \(K \subseteq X\), \(f\) is continuous
         on \(K\) implies the existence of some \(\mu \in M\) such that \(\mu(K^c) \ge \epsilon\). So, picking
@@ -330,21 +442,21 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         as desired.
     </p>
 
-    <p class="BodyText" style="text-align: right">🎉</p>
+    <p class="proof-end">□</p>
 
     <p class="BodyText">
         To conclude, we remark the following criterion for strong tightness.
     </p>
 
-    <p class="BodyText">
-        <b>Proposition.</b>
+    <p class="theorem-env">
+        <span class="env-label">Proposition.</span>
         Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Suppose that there exists a measure
         \(\nu \in \mathcal{M}(X)\) and \(g \in L^1(\nu)\) such that for all \(\mu \in M\), \(\mu \ll \nu\)
         and \(d \mu / d \nu \le g\). Then, \(M\) is strongly tight.
     </p>
 
-    <p class="BodyText">
-        <i>Proof.</i>
+    <p class="proof-env">
+        <span class="env-label">Proof.</span>
         Define \(\eta \in \mathcal{M}(X)\) by \(d \eta = \frac{g}{\|g\|_{L^1(\nu)}} d \nu\). Then, for
         all \(\epsilon > 0\) and \(f : X \to \mathbb{R}\) bounded measurable, there exists some compact
         set \(K\) such that \(f\) is continuous on \(K\) and \(\eta(K^c) \le \|g\|_{L^1(\nu)}^{-1}\epsilon\).
@@ -354,7 +466,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         as desired.
     </p>
 
-    <p class="BodyText" style="text-align: right">🎉</p>
+    <p class="proof-end">□</p>
 
     <p class="BodyText">
         Consequently, recall that if \((\mu_n) \subseteq \mathcal{M}(X)\) is a sequence of measures
@@ -398,8 +510,8 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         in \(\mathbb{R}^n\) is measurable. Yaël asked on Discord if anyone knows how to prove it. This short note contains my proof of this fact.
     </p>
 
-    <p class="BodyText">
-        <b>Definition.</b>
+    <p class="theorem-env">
+        <span class="env-label">Definition.</span>
         Given a partially ordered set \((X, (\le))\), \(S \subseteq X\) is said to be order connected if for all \(x, y \in S\),
         \[[x, y] := \{z \mid x \le z \le y\} \subseteq S.\]
     </p>
@@ -411,20 +523,20 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         can therefore talk about its order connected subsets.
     </p>
 
-    <p class="BodyText">
-        <b>Theorem.</b>
+    <p class="theorem-env">
+        <span class="env-label">Theorem.</span>
         \(S \subseteq \mathbb{R}^n\) is Lebesgue measurable if \(S\) is order connected with respect to the
         point-wise ordering on \(\mathbb{R}^n\).
     </p>
 
-    <p class="BodyText">
-        <i>Proof.</i>
+    <p class="proof-env">
+        <span class="env-label">Proof.</span>
         Defining \(S^+ := \{x \mid \exists \ y \in S, y \le x\}\) and \(S^- := \{x \mid \exists \ y \in s, x \le y\}\), we
         observe \(S = S^+ \cap S^-\). Therefore, it is sufficient to show that \(S^+\) and \(S^-\) are measurable.
         We will show measurability for \(S^+\) while the case for \(S^-\) is similar.
     </p>
 
-    <p class="BodyText">
+    <p class="proof-env">
         It is clear that for all \(x \in \mathbb{R}^n\), \(\{x\}^+\) is measurable. So, defining \(Q := S^+ \cap \mathbb{Q}^n\),
         \[Q^+ = \bigcup_{q \in Q} \{q\}^+ \subseteq S^+\]
         is measurable. Furthermore, \(S^+ \setminus Q^+ \subseteq \partial S^+\) since for all \(x \in S^\circ\), there exists some
@@ -433,7 +545,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         complete and \(S^+ = Q^+ \cup (S^+ \setminus Q^+)\), it suffices to show that \(\partial S^+\) is a null-set.
     </p>
 
-    <p class="BodyText">
+    <p class="proof-env">
         To show \(\text{Leb}(\partial S^+) = 0\) we will invoke the Lebesgue density theorem. Namely, by showing
         \[\partial S^+ \subseteq \{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}\]
         where
@@ -443,7 +555,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         \[\text{Leb}(\partial S^+) \le \text{Leb}(\{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}) = 0.\]
     </p>
 
-    <p class="BodyText">
+    <p class="proof-env">
         Indeed, for all \(x \in \partial S^+, \epsilon > 0\), \(\overline{S^+} \cap B_\epsilon(x)\) must contain
         the with the right-upper quadrant of the ball by the very definition of \(S^+\), implying
         \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \gtrapprox 2^{-n} \text{Leb}(B_\epsilon(x))\) bounding
@@ -454,7 +566,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         inclusion.
     </p>
 
-    <p class="BodyText" style="text-align: right">🎉</p>
+    <p class="proof-end">□</p>
 
 <p class="Section" id="order-topology">
     <i>3 Apr. 2022.</i> &ensp; Preorder Cannot Generate the Cofinite Topology on Infinite Sets</p>
@@ -469,8 +581,8 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         The second part is a bit more tricky and by playing around, I found that the following is true.
     </p>
 
-    <p class="BodyText">
-        <b>Theorem.</b>
+    <p class="theorem-env">
+        <span class="env-label">Theorem.</span>
         Given a infinite set \(X\), there does not exist a preorder on \(X\) which generates the cofinite topology.
     </p>
 
@@ -490,13 +602,13 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         the sets whose complements are finite or the empty set.
     </p>
 
-    <p class="BodyText">
-        <b>Proposition.</b>
+    <p class="theorem-env">
+        <span class="env-label">Proposition.</span>
         Given a infinite set \(X\), there does not exist a preorder on \(X\) which generates the cofinite topology.
     </p>
 
-    <p class="BodyText">
-        <i>Proof.</i>
+    <p class="proof-env">
+        <span class="env-label">Proof.</span>
         Suppose there exists a preorder \((\le)\) with the associated strict order \((<)\) such that the order topology generated by it is the same as the cofinite
         topology. For the cofinite topology, any non-empty open sets must intersect, and thus, since \(\{z \mid x < z\}\) and
         \(\{z \mid z < x\}\) are open in the order topology, their intersection is nonempty for all \(x\) if neither sets are empty.
@@ -504,18 +616,18 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
         Hence, at least one of the set is empty.
     </p>
 
-    <p class="BodyText">
+    <p class="proof-env">
         Now, denoting \(U_+\) the set of \(x\) for which \(\{z \mid z < x\}\) is non-empty (so \(\{z \mid x < z\} = \varnothing\) for all \(x \in U_+\)), as
         \(\{z \mid z < x\}\) is open, \(\{z \mid \neg z < x\}\) is finite for all \(x \in U_+\). As for all \(x, y \in U_+\), if \(y < x\),
         then \(x \in \{z \mid y < z\}\) contradicting \(\{z \mid y < z\} = \varnothing\), \(\neg y < x\) for all \(x, y \in U_+\). Hence,
         \(y \in \{z \mid \neg z < x\}\) for all \(y \in U_+\). Thus, as \(\{z \mid \neg z < x\}\) is finite, so is \(U_+\).
     </p>
 
-    <p class="BodyText">
+    <p class="proof-env">
         Similarly, defining \(U_-\) the set of \(x\) for which \(\{z \mid x < z\}\) is non-empty, by the same argument, \(U_-\) is finite.
         Hence, \(\{z \mid x < z\}\) and \(\{z \mid z < x\}\) is empty for all but finitely many \(x\). But then, the topology generated by
         the preorder has a finite base, implying only finitely many sets are open which is a contradiction.
     </p>
 
-    <p class="BodyText" style="text-align: right">🎉</p>
+    <p class="proof-end">□</p>
 

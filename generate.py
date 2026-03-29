@@ -52,31 +52,106 @@ def convert_latex_commands(text):
     return result
 
 
+THEOREM_ENVS = {"theorem", "definition", "proposition", "lemma", "corollary", "remark"}
+PROOF_ENVS = {"proof"}
+ALL_ENVS = THEOREM_ENVS | PROOF_ENVS
+
+
 def tex_to_html(tex_body):
     """Convert LaTeX body text to HTML paragraphs."""
-    # Split into paragraphs on blank lines
-    # But we need to be careful not to split inside math environments
-    paragraphs = re.split(r"\n\s*\n", tex_body.strip())
+    # First, identify environment blocks and mark them.
+    # We process the text linearly, tracking when we're inside an environment.
+    lines = tex_body.split("\n")
+    blocks = []  # list of (type, text) where type is None, env name, or "qed"
+    current_lines = []
+    current_env = None
 
+    for line in lines:
+        # Check for \begin{env}
+        begin_m = re.match(r"\s*\\begin\{(\w+)\}\s*$", line)
+        if begin_m and begin_m.group(1) in ALL_ENVS:
+            # Flush current block
+            if current_lines:
+                blocks.append((current_env, "\n".join(current_lines)))
+                current_lines = []
+            current_env = begin_m.group(1)
+            continue
+
+        # Check for \end{env}
+        end_m = re.match(r"\s*\\end\{(\w+)\}\s*$", line)
+        if end_m and end_m.group(1) in ALL_ENVS:
+            if current_lines:
+                blocks.append((current_env, "\n".join(current_lines)))
+                current_lines = []
+            if end_m.group(1) in PROOF_ENVS:
+                blocks.append(("qed", ""))
+            current_env = None
+            continue
+
+        # Check for standalone \qed
+        if line.strip() == r"\qed":
+            if current_lines:
+                blocks.append((current_env, "\n".join(current_lines)))
+                current_lines = []
+            blocks.append(("qed", ""))
+            continue
+
+        current_lines.append(line)
+
+    if current_lines:
+        blocks.append((current_env, "\n".join(current_lines)))
+
+    # Now process each block into HTML paragraphs
     html_parts = []
-    for para in paragraphs:
-        para = para.strip()
-        if not para:
+    for env, text in blocks:
+        if env == "qed":
+            html_parts.append('    <p class="proof-end">□</p>')
             continue
 
-        # Handle \qed
-        if para == r"\qed":
-            html_parts.append('    <p class="BodyText" style="text-align: right">🎉</p>')
-            continue
+        paragraphs = re.split(r"\n\s*\n", text.strip())
+        for pi, para in enumerate(paragraphs):
+            para = para.strip()
+            if not para:
+                continue
 
-        # Convert LaTeX commands to HTML
-        para = convert_latex_commands(para)
+            if para == r"\qed":
+                html_parts.append(
+                    '    <p class="proof-end">□</p>'
+                )
+                continue
 
-        # Indent content lines
-        lines = para.split("\n")
-        indented = "\n".join("        " + line.strip() for line in lines)
+            para = convert_latex_commands(para)
+            lines = para.split("\n")
+            indented = "\n".join("        " + l.strip() for l in lines)
 
-        html_parts.append(f'    <p class="BodyText">\n{indented}\n    </p>')
+            if env in THEOREM_ENVS and pi == 0:
+                label = env.capitalize()
+                html_parts.append(
+                    f'    <p class="theorem-env">\n'
+                    f'        <span class="env-label">{label}.</span>\n'
+                    f'{indented}\n'
+                    f'    </p>'
+                )
+            elif env in PROOF_ENVS and pi == 0:
+                label = env.capitalize()
+                html_parts.append(
+                    f'    <p class="proof-env">\n'
+                    f'        <span class="env-label">{label}.</span>\n'
+                    f'{indented}\n'
+                    f'    </p>'
+                )
+            elif env in THEOREM_ENVS:
+                html_parts.append(
+                    f'    <p class="theorem-env">\n{indented}\n    </p>'
+                )
+            elif env in PROOF_ENVS:
+                html_parts.append(
+                    f'    <p class="proof-env">\n{indented}\n    </p>'
+                )
+            else:
+                html_parts.append(
+                    f'    <p class="BodyText">\n{indented}\n    </p>'
+                )
 
     return "\n\n" + "\n\n".join(html_parts) + "\n"
 

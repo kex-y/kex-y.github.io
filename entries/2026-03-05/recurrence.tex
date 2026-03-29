@@ -1,0 +1,60 @@
+% id: recurrence
+% title: Recurrence of planar Brownian motion
+% date: 05 Mar. 2026
+
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+
+\begin{document}
+
+I first saw the recurrence (in small balls) property of planar Brownian motion a couple years ago during 
+the Advanced Probability course offered by Part III. The proof I saw was of course (I believe) the 
+standard approach in which one uses the fact that the Brownian motion composed with any harmonic function 
+remains to be a martingale. In particular, by using the logarithm, this fact (and the optional stopping theorem) 
+allows us to easily compute the probability that 
+the Brownian motion hits a small ball before hitting a larger one. Thus, by taking the radius of the 
+larger ball to infinity, we finds that the Brownian motion hits the small ball with probability one. 
+
+This problem came up again recently during the exercise session of the Random Geometry course offered 
+here at EPFL and, in an attempt at avoiding martingale techniques, Colin Piernot and I (mostly Colin)
+found a clever proof of this the sketch of which I would like to share here. 
+
+\begin{theorem}
+  Let \(B_t\) be a complex Brownian motion and \(z\) be a point in the complex plane. Then, for any 
+  \(\epsilon > 0\), we have that
+  \[\mathbb{P}(|B_t - z| < \epsilon \text{ i.o.}) = 1.\]
+\end{theorem}
+\begin{proof}
+  By translation, we my assume without loss of generality that \(z = 0\) and the Brownian motions 
+  starts at \(1\).
+
+  Let us define the following continuous time random walk \(X_t\) on \(\mathbb{Z}\): 
+  Defining \(\tau_0 = 0\)
+  \[\tau_{n + 1} := \inf\{t > \tau_n : |B_t| \in 2^{\mathbb{Z}}\}\]
+  we set \(X_t = \log_2 |B_{\tau_n}|\) whenever \(t \in [\tau_n, \tau_{n + 1})\). Namely, 
+  \(X_t\) is the continuous time random walk which moves to \(n\) whenever the Brownian motion 
+  hits the circle of radius \(2^n\). Thus, as hitting the \(\epsilon\)-ball centered at the origin 
+  corresponds to \(X_t\) hitting \(n\) for any \(n \in \mathbb{Z}\) satisfying \(2^n < \epsilon\), 
+  it follows that the conclusion holds if we can show that \(X_t\) is symmetric (and so, is transient). 
+
+  Straightaway, by scaling invariance and the strong Markov property, it suffices to show that 
+  \[\mathbb{P}(X_1 = 0) = \mathbb{P}(X_1 = 2) = \frac{1}{2}.\]
+  Namely, we need to show that \(B_t\) hits the circle of radius \(1/2\) before the circle of 
+  radius \(2\) with probability \(1/2\).
+  However, this is clear as, the map 
+  \[f : A \to A : z \mapsto \frac{1}{z}\]
+  with \(A\) being the annulus \(\{z \in \mathbb{C} : 1/2 \le |z| \le 2\}\) is conformal. Thus, 
+  as \(f\) maps the boundary \(\{|z| = 2\}\) to \(\{|z| = 1/2\}\) and \(f(B_t)\) is also a Brownian 
+  motion starting at 1 (by the conformal invariance of Brownian motion), the conclusion holds 
+  by symmetry.
+\end{proof}
+
+Interestingly (or maybe not so considering the topic of the course), this type of argument also 
+appeared later in the Random Geometry course in the probabilistic proof of the Picards little theorem.
+There, starting with the Brownian motion's image over a conformal map, one similarly constructs a 
+random walk on \(\mathbb{Z}^2\) (albeit here the construction is much more complicated with a lot 
+of nuances. In particular, here the random walk is associated with the winding number of the trace 
+quotiented by an equivalence relation in order to obtain integrability). Then, by showing that this 
+radom walk is transient, one is able to conclude the theorem.
+
+\end{document}
