@@ -1,0 +1,25 @@
+% id: random-compact
+% title: Random Compact Sets in Polish Spaces
+% date: 27 Oct. 2023
+
+    <p class="BodyText">
+        Here is a fun puzzle:
+        Let \(X\) be a polish space and \(K\) a random compact set of \(X\) (i.e. a random variable taking values
+        in compact subsets of \(X\)). Fix \(\epsilon > 0\), does there necessarily exists a deterministic compact
+        set \(A\) such that \(\mathbb{P}(K \subseteq A) \ge 1 - \epsilon\)?
+    </p>
+
+    <p class="BodyText">
+        This question seems quite similar to the notion of <i>tightness</i> for measures and it would not
+        come as a shock that the solution to this question uses tightness of a single measure on Polish spaces.
+    </p>
+
+    <p class="BodyText">
+        Define \(\mu\) such that
+        \[\mu(B) = \mathbb{P}(K \subsetneq B),\]
+        it is not difficult to see that \(\mu\) defines a measure on \(\mathcal{B}(X)\) (note that strict subset
+        is necessary as \(K\) might achieve \(\varnothing\) with positive probability).
+        Thus, as a measure on \(X\) is tight, there exists a compact set \(A\) such that
+        \[\mathbb{P}(K \subseteq A) \ge \mathbb{P}(K \subsetneq A) = \mu(A) \ge 1 - \epsilon\]
+        which is precisely what we needed.
+    </p>

@@ -1,0 +1,35 @@
+% id: disjoint-mutsig
+% title: Disjointness and Mutually Singular
+% date: 19 Oct. 2024
+
+    <p class="BodyText">
+        For an ordered set \((X, \le)\), we say \(x, y \in X\) are disjoint if for any \(z \le x\) and \(z \le y\),
+        we have that \(z = \perp\). Rémy Degenne on the Lean Zulip observed that, in the case of \(\sigma\)-finite measures,
+        the notion of mutually singular is equivalent to disjointness. He then asked whether or not this fact generalizes
+        to arbitrary measures (Rémy's proof used the Radon-Nikodym derivative and consequently relies on
+        \(\sigma\)-finiteness). In this short note, we provide an elementary proof of this equivalence without
+        assuming \(\sigma\)-finiteness.
+    </p>
+
+    <p class="BodyText">
+        For a measurable space \((X, \Sigma)\) and two measures \(\mu, \nu\) on \((X, \Sigma)\), we define
+        the measure \(\mu \wedge \nu\) by
+        \[(\mu \wedge \nu)(S) = \inf \{\mu(S \cap T) + \nu(S \cap T^c) \mid T \in \Sigma\}.\]
+        It is a standard exercise to check that this is indeed a <it>bona-fide</it> measure and that
+        \(\mu \wedge \nu \le \mu\) and \(\mu \wedge \nu \le \nu\).
+    </p>
+
+    <p class="BodyText">
+        Fixing \(\epsilon > 0\) and \(n \in \mathbb{N}\), as \((\mu \wedge \nu)(X) = 0\),
+        we have by construction that there exists \(S_n^\epsilon \in \Sigma\) such that
+        \[\mu(S_n^\epsilon) + \nu((S_n^\epsilon)^c) \le \epsilon 2^{-n}.\]
+        Thus, denoting \(S^\epsilon = \bigcap_{n \in \mathbb{N}} S_n^\epsilon\), we have that
+        \(\mu(S^\epsilon) = 0\) and
+        \[\nu((S^\epsilon)^c) = \nu\left(\bigcup_{n \in \mathbb{N}} (S_n^\epsilon)^c\right)
+            \le \sum_{n \in \mathbb{N}}\epsilon 2^{-n} = \epsilon.\]
+        Finally, taking \(S = \bigcup_{n \in \mathbb{N}} S^{1 / n}\),
+        \(\mu(S) = 0\) as \(S\) is a countable union of \(\mu\)-null-sets while
+        \[\nu(S^c) = \nu\left(\bigcap_{n \in \mathbb{N}} (S^{1 / n})^c\right) \le \frac{1}{k}\]
+        for all \(k \in \mathbb{N}\) implying that \(\nu(S^c) = 0\). Thus, \(\mu\) and \(\nu\) are mutually singular
+        as required.
+    </p>

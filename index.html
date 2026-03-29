@@ -3,24 +3,16 @@ layout: default
 title: Kexing Ying's website
 author: <a href="mailto:kexing.ying@epfl.ch">kexing.ying@epfl.ch</a>
 date: Last updated Mar. 2025
-abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kexing.ying/?lang=en">Kexing Ying</a> - 
-    a PhD student under the supervision of Prof. Xue-Mei Li within the chair of 
-    <a href="https://www.epfl.ch/labs/stoan/">Stochastic Analysis</a> at EPFL. I am also active in the 
-    formalisation of mathematics (mostly within probability theory) using the 
+abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kexing.ying/?lang=en">Kexing Ying</a> -
+    a PhD student under the supervision of Prof. Xue-Mei Li within the chair of
+    <a href="https://www.epfl.ch/labs/stoan/">Stochastic Analysis</a> at EPFL. I am also active in the
+    formalisation of mathematics (mostly within probability theory) using the
     <a href="https://github.com/leanprover-community/mathlib"> Lean theorem prover</a>.
-    
-    I will post about maths and maybe some other stuff I find interesting. 
+
+    I will post about maths and maybe some other stuff I find interesting.
 ---
 
 <p class="Section">Contents</p>
-
-<a href="paper-1">
-    <div class="Contents">
-        Strong completeness of SDEs and Non-explosion of RDEs
-    </div>
-    <div class="ContentsRight">
-        12 Feb. 2025
-    </div>
 
 <a href="#disjoint-mutsig">
     <div class="Contents">
@@ -31,6 +23,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     </div>
 </a>
 
+<p>
 <a href="#cameron-martin">
     <div class="Contents">
         An Application of the Cameron-Martin Theorem
@@ -78,7 +71,7 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 <a href="#order-topology" class="Subsection">
     <div>
         <div class="Contents">
-            Preorder Cannot Generate the Cofinite Topology 
+            Preorder Cannot Generate the Cofinite Topology on Infinite Sets 
         </div>
         <div class="ContentsRight">
             3 Apr. 2022
@@ -89,57 +82,48 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
 <div class="spacer"></div>
 
-<p class="Section" id="paper-1" style="margin-top:3cm;"> 
-    <i>12 Feb. 2025</i> Strong completeness and Non-explosion of RDEs</p>
-    
-    <p class="BodyText">
-        Xue-Mei Li and I have recently uploaded a paper to the arXiv titled 
-        <i>Strong completeness of SDEs and non-explosion for RDEs with coefficients having unbounded derivatives</i>. 
-        You can read it <a href="https://arxiv.org/abs/2502.08799">here</a>.
-    </p>
-
 <p class="Section" id="disjoint-mutsig"> 
     <i>19 Oct. 2024.</i> Disjointness and Mutually Singular</p>
 
     <p class="BodyText">
         For an ordered set \((X, \le)\), we say \(x, y \in X\) are disjoint if for any \(z \le x\) and \(z \le y\),
-        we have that \(z = \perp\). Rémy Degenne on the Lean Zulip observed that, in the case of \(\sigma\)-finite measures, 
-        the notion of mutually singular is equivalent to disjointness. He then asked whether or not this fact generalizes 
-        to arbitrary measures (Rémy's proof used the Radon-Nikodym derivative and consequently relies on 
-        \(\sigma\)-finiteness). In this short note, we provide an elementary proof of this equivalence without 
+        we have that \(z = \perp\). Rémy Degenne on the Lean Zulip observed that, in the case of \(\sigma\)-finite measures,
+        the notion of mutually singular is equivalent to disjointness. He then asked whether or not this fact generalizes
+        to arbitrary measures (Rémy's proof used the Radon-Nikodym derivative and consequently relies on
+        \(\sigma\)-finiteness). In this short note, we provide an elementary proof of this equivalence without
         assuming \(\sigma\)-finiteness.
     </p>
 
     <p class="BodyText">
-        For a measurable space \((X, \Sigma)\) and two measures \(\mu, \nu\) on \((X, \Sigma)\), we define 
-        the measure \(\mu \wedge \nu\) by 
+        For a measurable space \((X, \Sigma)\) and two measures \(\mu, \nu\) on \((X, \Sigma)\), we define
+        the measure \(\mu \wedge \nu\) by
         \[(\mu \wedge \nu)(S) = \inf \{\mu(S \cap T) + \nu(S \cap T^c) \mid T \in \Sigma\}.\]
-        It is a standard exercise to check that this is indeed a <it>bona-fide</it> measure and that 
+        It is a standard exercise to check that this is indeed a <it>bona-fide</it> measure and that
         \(\mu \wedge \nu \le \mu\) and \(\mu \wedge \nu \le \nu\).
     </p>
 
     <p class="BodyText">
         Fixing \(\epsilon > 0\) and \(n \in \mathbb{N}\), as \((\mu \wedge \nu)(X) = 0\),
-        we have by construction that there exists \(S_n^\epsilon \in \Sigma\) such that 
+        we have by construction that there exists \(S_n^\epsilon \in \Sigma\) such that
         \[\mu(S_n^\epsilon) + \nu((S_n^\epsilon)^c) \le \epsilon 2^{-n}.\]
         Thus, denoting \(S^\epsilon = \bigcap_{n \in \mathbb{N}} S_n^\epsilon\), we have that
-        \(\mu(S^\epsilon) = 0\) and 
-        \[\nu((S^\epsilon)^c) = \nu\left(\bigcup_{n \in \mathbb{N}} (S_n^\epsilon)^c\right) 
+        \(\mu(S^\epsilon) = 0\) and
+        \[\nu((S^\epsilon)^c) = \nu\left(\bigcup_{n \in \mathbb{N}} (S_n^\epsilon)^c\right)
             \le \sum_{n \in \mathbb{N}}\epsilon 2^{-n} = \epsilon.\]
-        Finally, taking \(S = \bigcup_{n \in \mathbb{N}} S^{1 / n}\), 
-        \(\mu(S) = 0\) as \(S\) is a countable union of \(\mu\)-null-sets while 
+        Finally, taking \(S = \bigcup_{n \in \mathbb{N}} S^{1 / n}\),
+        \(\mu(S) = 0\) as \(S\) is a countable union of \(\mu\)-null-sets while
         \[\nu(S^c) = \nu\left(\bigcap_{n \in \mathbb{N}} (S^{1 / n})^c\right) \le \frac{1}{k}\]
         for all \(k \in \mathbb{N}\) implying that \(\nu(S^c) = 0\). Thus, \(\mu\) and \(\nu\) are mutually singular
-        as required.   
+        as required.
     </p>
 
 <p class="Section" id="cameron-martin"> 
     <i>15 May. 2024.</i> An Application of the Cameron-Martin Theorem</p>
 
     <p class="BodyText">
-        The Cameron-Martin theorem provides a characterization of the Gaussian measure on infinite dimensional 
-        spaces. While I first saw this definition in Martin's lectures on SPDEs, it was mostly presented 
-        with context with its application to SPDEs. In this entry, I'll record an application of this 
+        The Cameron-Martin theorem provides a characterization of the Gaussian measure on infinite dimensional
+        spaces. While I first saw this definition in Martin's lectures on SPDEs, it was mostly presented
+        with context with its application to SPDEs. In this entry, I'll record an application of this
         theorem in the context of obtaining a maximal inequality for Brownian motions.
     </p>
 
@@ -150,23 +134,23 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     <p class="BodyText">
         <b>Theorem.</b>
         Let \(\mu \in \mathcal{M}(X)\) be a Gaussian and denote \(\mathcal{H}_\mu\) for its Cameron-Martin space.
-        For \(h \in X\), denoting \(\tau_h : x \in X \mapsto x + h\), we have that \(\tau_h^* \mu \ll \mu\) if and only 
-        if \(h \in \mathcal{H}_\mu\). In this case, 
+        For \(h \in X\), denoting \(\tau_h : x \in X \mapsto x + h\), we have that \(\tau_h^* \mu \ll \mu\) if and only
+        if \(h \in \mathcal{H}_\mu\). In this case,
         \[\frac{d\tau_h^* \mu}{d\mu}(x) = \exp\left(h^*(x) - \frac{1}{2}\|h\|^2_\mu\right).\]
     </p>
 
     <p class="BodyText">
-        Let \(\mu\) be the Gaussian measure on \(\mathcal{C}([0, 1], \mathbb{R})\) with covariance 
-        \(C_\mu(\delta_t, \delta_s) = s \wedge t\). \(\mu\) corresponds to the law of the Brownian motion 
-        on \([0, 1]\) and we call it the Wiener measure. We have that \(\mathcal{H}_\mu = H^{1, 2}_0([0, 1])\) - 
-        the space of all absolutely continuous functions \(h\) with \(h(0) = 0\) and \(\dot h(s) \in L^2([0, 1])\). 
-        Moreover, for \(h \in \mathcal{H}_\mu\), 
-        \(h^*(k) = \int_0^1 \dot h(s) \dot k(s) d s\). As this defines a bounded linear functional from \(\mathcal{H}_\mu\), 
-        we can almost surely uniquely extend \(h^*\) to a measurable element of \(C_\mu(\delta_t, \delta_s)^*\). 
-        To see this, it suffices to check that 
+        Let \(\mu\) be the Gaussian measure on \(\mathcal{C}([0, 1], \mathbb{R})\) with covariance
+        \(C_\mu(\delta_t, \delta_s) = s \wedge t\). \(\mu\) corresponds to the law of the Brownian motion
+        on \([0, 1]\) and we call it the Wiener measure. We have that \(\mathcal{H}_\mu = H^{1, 2}_0([0, 1])\) -
+        the space of all absolutely continuous functions \(h\) with \(h(0) = 0\) and \(\dot h(s) \in L^2([0, 1])\).
+        Moreover, for \(h \in \mathcal{H}_\mu\),
+        \(h^*(k) = \int_0^1 \dot h(s) \dot k(s) d s\). As this defines a bounded linear functional from \(\mathcal{H}_\mu\),
+        we can almost surely uniquely extend \(h^*\) to a measurable element of \(C_\mu(\delta_t, \delta_s)^*\).
+        To see this, it suffices to check that
         \[h_t = \delta_t(h) = C_\mu(\delta_t, h^*) = h^*(C_\mu(\delta_t)).\]
-        We see that 
-        \[C_\mu(\delta_t)_s = \left(\int \omega \delta_t(\omega) \mu(d \omega)\right)_s 
+        We see that
+        \[C_\mu(\delta_t)_s = \left(\int \omega \delta_t(\omega) \mu(d \omega)\right)_s
         = \int \omega_s \omega_t \mu(d \omega) = C_\mu(\delta_t, \delta_s) = s \wedge t.\]
         Thus, \(\dot{C}_\mu(\delta_t)_s = \mathbb{1}_{[0, t]}(s)\) and hence,
         \[h^*(C_\mu(\delta_t)) = \int_0^t \dot f_s d s = f_t\]
@@ -174,45 +158,45 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     </p>
 
     <p class="BodyText">
-        As an application, the Cameron-Martin theorem allows us to bound the probability that a Brownian motion 
-        stays near a given function. In particular, for \(f \in H^{1, 2}_0([0, 1])\), denoting \(\mu_W\) for the 
+        As an application, the Cameron-Martin theorem allows us to bound the probability that a Brownian motion
+        stays near a given function. In particular, for \(f \in H^{1, 2}_0([0, 1])\), denoting \(\mu_W\) for the
         Wiener measure, we have that
         \[\mathbb{P}(|B_t - f|_\infty \le \epsilon) = \tau_{-f}^* \mu_W(\overline B_\epsilon(0))
         = e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])}} \int_{\overline B_\epsilon(0)} e^{- f^*(\omega)} \mu_W(d \omega).\]
-        This is then bounded above by 
+        This is then bounded above by
         \[e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])} + \epsilon \|f^*\|_{X^*}} \mathbb{P}(|B_t|_\infty \le \epsilon).\]
-        On the other hand, using the inequality \(e^x \ge 1 + x\), we have that 
-        \[\int_{\overline B_\epsilon(0)} e^{- f^*(\omega)} \mu_W(d \omega) \ge 
+        On the other hand, using the inequality \(e^x \ge 1 + x\), we have that
+        \[\int_{\overline B_\epsilon(0)} e^{- f^*(\omega)} \mu_W(d \omega) \ge
         \int_{\overline B_\epsilon(0)} (1 + - f^*(\omega)) \mu_W(d \omega)
         \ge \mathbb{P}(|B_t|_\infty \le \epsilon) - \int_{\overline B_\epsilon(0)} f^*(\omega) \mu_W(d \omega)\]
-        Now, since \(f^*_* \mu_W \sim \mathcal{N}(0, \|f\|_{\mathcal{H}_W}^2)\), the last integral is zero by spherical symmetry. 
-        Consequently, have the bound 
-        \[\mathbb{P}(|B_t - f|_\infty \le \epsilon) \in 
-        e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])}} 
+        Now, since \(f^*_* \mu_W \sim \mathcal{N}(0, \|f\|_{\mathcal{H}_W}^2)\), the last integral is zero by spherical symmetry.
+        Consequently, have the bound
+        \[\mathbb{P}(|B_t - f|_\infty \le \epsilon) \in
+        e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])}}
         \left[\mathbb{P}(|B_t|_\infty \le \epsilon), e^{\epsilon \|f^*\|_{X^*}}\mathbb{P}(|B_t|_\infty \le \epsilon)\right]\]
-        and thus, 
-        \[\lim_{\epsilon \downarrow 0} \frac{\mathbb{P}(|B_t - f|_\infty \le \epsilon)}{\mathbb{P}(|B_t|_\infty \le \epsilon)} 
+        and thus,
+        \[\lim_{\epsilon \downarrow 0} \frac{\mathbb{P}(|B_t - f|_\infty \le \epsilon)}{\mathbb{P}(|B_t|_\infty \le \epsilon)}
         = e^{-\frac{1}{2}\|f\|^2_{H^{1, 2}_0([0, 1])}}.\]
     </p>
 
-<p class="Section" id="precompact"> 
-    <i>7 Mar. 2024.</i> Precompactness in the Total Variational Topology</p>
-    
+<p class="Section" id="precompact">
+    <i>7 Mar. 2024.</i> &ensp; Precompactness in the Total Variational Topology</p>
+
     <p class="BodyText">
-        There is the following classical result which relates the Wasserstein distance to the weak 
+        There is the following classical result which relates the Wasserstein distance to the weak
         topology on the space of measures:
     </p>
 
     <p class="BodyText">
-        Let \(X\) be a Polish space and let \(d\) be a metric compatible with the topology of \(X\). By replacing 
-        \(d\) by \(d \wedge 1\), we may assume that \(d \le 1\). Denoting \(\mathcal{M}(X)\) the space of 
-        probability measures on \(X\), for a sequence of measures 
-        \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\), we have that 
+        Let \(X\) be a Polish space and let \(d\) be a metric compatible with the topology of \(X\). By replacing
+        \(d\) by \(d \wedge 1\), we may assume that \(d \le 1\). Denoting \(\mathcal{M}(X)\) the space of
+        probability measures on \(X\), for a sequence of measures
+        \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\), we have that
         \begin{equation}\label{eq:wasserstein-weak}
         d_1(\mu_n, \mu) \to 0 \iff \mu_n \rightharpoonup \mu.
         \end{equation}
-        where \(d_1\) denotes the Wasserstein distance of order 1 corresponding to the metric \(d\) and 
-        \(\rightharpoonup\) denotes weak convergence. 
+        where \(d_1\) denotes the Wasserstein distance of order 1 corresponding to the metric \(d\) and
+        \(\rightharpoonup\) denotes weak convergence.
     </p>
 
     <p class="BodyText">
@@ -222,63 +206,63 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     </p>
 
     <p class="BodyText">
-        Recall that Lusin's theorem for Radon measures states that: Let \(X\) be a locally compact Polish space 
-        and take \(\mu \in \mathcal{M}(X)\) (so \(\mu\) is automatically a Radon measure), \(f : X \to \mathbb{R}\) 
-        a bounded measurable function and \(\epsilon > 0\). Then, there exists a compact set \(K \subseteq X\) 
+        Recall that Lusin's theorem for Radon measures states that: Let \(X\) be a locally compact Polish space
+        and take \(\mu \in \mathcal{M}(X)\) (so \(\mu\) is automatically a Radon measure), \(f : X \to \mathbb{R}\)
+        a bounded measurable function and \(\epsilon > 0\). Then, there exists a compact set \(K \subseteq X\)
         such that \(f\) is continuous on \(K\) and \(\mu(K) \ge 1 - \epsilon\). This motivates the following definition.
     </p>
 
     <p class="BodyText">
         <b>Definition.</b>
-        Given a set of measures \(M \subseteq \mathcal{M}(X)\), we say that \(M\) is strongly tight if for all 
+        Given a set of measures \(M \subseteq \mathcal{M}(X)\), we say that \(M\) is strongly tight if for all
         \(f : X \to \mathbb{R}\) bounded measurable and \(\epsilon > 0\), there exists a compact set \(K \subseteq X\)
         such that \(f\) is continuous on \(K\) and for all \(\mu \in M\), \(\mu(K) \ge 1 - \epsilon\).
     </p>
 
     <p class="BodyText">
-        We remark that, by applying Lusin's theorem to \(\epsilon / n\), it is clear that any finite family of measures 
-        is automatically strongly tight. Moreover, we see that if \(\mu_n \to \mu\) in total variation, then 
-        \(\{\mu_n, \mu\}_n\) is also strongly tight. Finally, as the name suggests, it is clear that if 
+        We remark that, by applying Lusin's theorem to \(\epsilon / n\), it is clear that any finite family of measures
+        is automatically strongly tight. Moreover, we see that if \(\mu_n \to \mu\) in total variation, then
+        \(\{\mu_n, \mu\}_n\) is also strongly tight. Finally, as the name suggests, it is clear that if
         \(M \subseteq \mathcal{M}(X)\) is strongly tight, then it is also tight.
     </p>
 
     <p class="BodyText">
-        By slightly modifying the proof of convergence in Wasserstein distance implies weak convergence, we observe the following 
+        By slightly modifying the proof of convergence in Wasserstein distance implies weak convergence, we observe the following
         relation between convergence in Wasserstein distance and convergence in total variation.
     </p>
 
     <p class="BodyText">
         <b>Proposition.</b>
-        Let \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\). 
+        Let \((\mu_n)_{n \in \mathbb{N}} \subseteq \mathcal{M}(X)\) and \(\mu \in \mathcal{M}(X)\).
         Then, \(\mu_n \to \mu\) in total variation if and only if \((\mu_n)_n\) is strongly tight and \(d_1(\mu_n, \mu) \to 0\).
     </p>
 
     <p class="BodyText">
         <i>Proof.</i>
-        The forward direction is obvious so we only prove the reverse. Suppose that \((\mu_n)_n\) is strongly tight 
-        and \(d_1(\mu_n, \mu) \to 0\). Then, taking \(f : X \to \mathbb{R}\) be a bounded measurable function, 
+        The forward direction is obvious so we only prove the reverse. Suppose that \((\mu_n)_n\) is strongly tight
+        and \(d_1(\mu_n, \mu) \to 0\). Then, taking \(f : X \to \mathbb{R}\) be a bounded measurable function,
         we will show that
         \[\left|\int f d \mu_n - \int f d \mu\right| \to 0.\]
-        Fixing \(\epsilon > 0\), by strong tightness, there exists some \(K\) compact such that \(f\) is uniformly continuous on \(K\) and 
-        \(\mu(K^c), \mu_n(K^c) < \epsilon\) for all \(n\). Thus, there exists some \(\delta > 0\) such that 
+        Fixing \(\epsilon > 0\), by strong tightness, there exists some \(K\) compact such that \(f\) is uniformly continuous on \(K\) and
+        \(\mu(K^c), \mu_n(K^c) < \epsilon\) for all \(n\). Thus, there exists some \(\delta > 0\) such that
         for all \(x, y \in \Delta_\delta := \{(x, y) \in K^2 : d(x, y) < \delta\}\), we have \(|f(x) - f(y)| < \epsilon\).
     </p>
-    
+
     <p class="BodyText">
-        Moreover, since \(d_1(\mu_n, \mu) \to 0\), there exists a sequence of couplings 
-        \(\Pi_n \in \mathcal{C}(\mu_n, \mu)\) such that 
+        Moreover, since \(d_1(\mu_n, \mu) \to 0\), there exists a sequence of couplings
+        \(\Pi_n \in \mathcal{C}(\mu_n, \mu)\) such that
         \[\int d(x, y) \Pi_n(d x, d y) \to 0.\]
-        So, 
-        \[0 \leftarrow \int d(x, y) \Pi_n(d x, d y) \ge \int_{\Delta_\delta^c \cap K^2} d(x, y) \Pi_n(d x, d y) 
+        So,
+        \[0 \leftarrow \int d(x, y) \Pi_n(d x, d y) \ge \int_{\Delta_\delta^c \cap K^2} d(x, y) \Pi_n(d x, d y)
             \ge \delta \Pi_n(\Delta_\delta^c \cap K^2) \ge 0\]
         implying \(\Pi_n(\Delta_\delta^c \cap K^2) < \epsilon\) for sufficiently large \(n\). Thus, for sufficiently large \(n\),
-        we have that 
+        we have that
         \begin{align*}
-            \left|\int f d \mu_n - \int f d \mu\right| 
+            \left|\int f d \mu_n - \int f d \mu\right|
             & = \left|\int (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
-            & \le \left|\int_{\Delta_\delta} (f(x) - f(y)) \Pi_n(d x, d y)\right| 
+            & \le \left|\int_{\Delta_\delta} (f(x) - f(y)) \Pi_n(d x, d y)\right|
             + \left|\int_{\Delta_\delta^c \cap K^2} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
-            & + \left|\int_{X \times K^c} (f(x) - f(y)) \Pi_n(d x, d y)\right| + 
+            & + \left|\int_{X \times K^c} (f(x) - f(y)) \Pi_n(d x, d y)\right| +
             \left|\int_{K^c \times X} (f(x) - f(y)) \Pi_n(d x, d y)\right|\\
             & \le \epsilon + 2|f|_\infty \epsilon + 2|f|_\infty \mu_n(X)\mu(K^c) + 2|f|_\infty \mu_n(K^c)\mu(K)\\
             & \le \epsilon(1 + 6|f|_\infty).
@@ -292,18 +276,18 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     <p class="BodyText" style="text-align: right">🎉</p>
 
     <p class="BodyText">
-        Alternatively, one can also obtain the above by using the equivalence of weak convergence and convergence 
-        is Wasserstein distance. In particular, 
-        we note that for a given bounded measurable function \(f : X \to \mathbb{R}\) and \(\mu \in \mathcal{M}(X)\), 
-        there exists a continuous function \(\tilde f : X \to \mathbb{R}\) such that 
-        \[\left| \int f d \mu - \int \tilde f d \mu \right| < \epsilon.\] 
-        This follows by Lusin's theorem and Tietze extension. Hence, in a similar vein, in the case where we have 
-        strong tightness, applying Tietze extension and triangle inequality provides convergence in total variation 
+        Alternatively, one can also obtain the above by using the equivalence of weak convergence and convergence
+        is Wasserstein distance. In particular,
+        we note that for a given bounded measurable function \(f : X \to \mathbb{R}\) and \(\mu \in \mathcal{M}(X)\),
+        there exists a continuous function \(\tilde f : X \to \mathbb{R}\) such that
+        \[\left| \int f d \mu - \int \tilde f d \mu \right| < \epsilon.\]
+        This follows by Lusin's theorem and Tietze extension. Hence, in a similar vein, in the case where we have
+        strong tightness, applying Tietze extension and triangle inequality provides convergence in total variation
         given weak convergence.
     </p>
 
     <p class="BodyText">
-        In any case, this provides a characterization of precompactness in the total variational topology. 
+        In any case, this provides a characterization of precompactness in the total variational topology.
 
     </p>
 
@@ -315,90 +299,89 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
     <p class="BodyText">
         <i>Proof.</i>
-        The forward direction is simple. Indeed, if \(M\) is strongly tight, then it is tight and so any sequence 
-        of measures \((\mu_n)\) in \(M\) has a weakly convergent subsequence \(\mu_{n_k} \to \mu \in \mathcal{M}(X)\). 
-        However, as \((\mu_{n_k})\) is also strongly tight, the previous lemma show that this convergence 
+        The forward direction is simple. Indeed, if \(M\) is strongly tight, then it is tight and so any sequence
+        of measures \((\mu_n)\) in \(M\) has a weakly convergent subsequence \(\mu_{n_k} \to \mu \in \mathcal{M}(X)\).
+        However, as \((\mu_{n_k})\) is also strongly tight, the previous lemma show that this convergence
         can be taking to be instead convergence in total variation. Thus, any sequence in \(M\) has a convergent
         subsequence in total variation which implies that \(M\) is precompact.
     </p>
 
     <p class="BodyText">
-        For the converse, we will prove the contrapositive, i.e. not strongly tight implies the existence of a sequence 
-        of measures which does not have a convergence subsequence. In particular, we will construct a sequence of measures 
-        \((\mu_n) \subseteq M\) and compact sets \((K_n)\) such that for all \(m < n\), 
-        \(\mu_n(K_n^c) - \mu_m(K_n^c) > \epsilon / 2\). Thus, as 
+        For the converse, we will prove the contrapositive, i.e. not strongly tight implies the existence of a sequence
+        of measures which does not have a convergence subsequence. In particular, we will construct a sequence of measures
+        \((\mu_n) \subseteq M\) and compact sets \((K_n)\) such that for all \(m < n\),
+        \(\mu_n(K_n^c) - \mu_m(K_n^c) > \epsilon / 2\). Thus, as
         \[\|\mu - \nu\|_{TV} = 2\sup_{S \in \mathcal{B}(X)} |\mu(S) - \nu(S)|,\]
-        we have that \(\|\mu_n - \mu_m\|_{TV} > \epsilon\) for all \(m < n\) implying \((\mu_n)\) has no 
+        we have that \(\|\mu_n - \mu_m\|_{TV} > \epsilon\) for all \(m < n\) implying \((\mu_n)\) has no
         convergence subsequence.
     </p>
 
     <p class="BodyText">
-        Assuming \(M\) is not strongly tight, then there exists some \(\epsilon > 0\) and a bounded measurable 
-        function \(f : X \to \mathbb{R}\) such that for all compact sets \(K \subseteq X\), \(f\) is continuous 
-        on \(K\) implies the existence of some \(\mu \in M\) such that \(\mu(K^c) \ge \epsilon\). So, picking 
+        Assuming \(M\) is not strongly tight, then there exists some \(\epsilon > 0\) and a bounded measurable
+        function \(f : X \to \mathbb{R}\) such that for all compact sets \(K \subseteq X\), \(f\) is continuous
+        on \(K\) implies the existence of some \(\mu \in M\) such that \(\mu(K^c) \ge \epsilon\). So, picking
         \(\mu_0 \in M\) and supposing that we are given \(\mu_1, \dots, \mu_n\), as a finite family of measures
-        is strongly tight, we can choose a compact set \(K_n \subseteq X\) such that \(f\) is continuous on \(K_n\) 
+        is strongly tight, we can choose a compact set \(K_n \subseteq X\) such that \(f\) is continuous on \(K_n\)
         and for all \(m \le n\), \(\mu_m(K_n^c) \le \epsilon / 2\). Then, by the lack of strong tightness,
-        we can choose \(\mu_{n + 1} \in M\) such that \(\mu_{n + 1}(K_n^c) \ge \epsilon\). Consequently, 
+        we can choose \(\mu_{n + 1} \in M\) such that \(\mu_{n + 1}(K_n^c) \ge \epsilon\). Consequently,
         \[\mu_{n + 1}(K_n^c) - \mu_m(K_n^c) \ge \epsilon - \frac{\epsilon}{2} = \frac{\epsilon}{2}\]
         as desired.
     </p>
-    
+
     <p class="BodyText" style="text-align: right">🎉</p>
 
     <p class="BodyText">
-        To conclude, we remark the following criterion for strong tightness. 
+        To conclude, we remark the following criterion for strong tightness.
     </p>
 
     <p class="BodyText">
         <b>Proposition.</b>
-        Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Suppose that there exists a measure 
-        \(\nu \in \mathcal{M}(X)\) and \(g \in L^1(\nu)\) such that for all \(\mu \in M\), \(\mu \ll \nu\) 
+        Let \(M \subseteq \mathcal{M}(X)\) be a family of measures. Suppose that there exists a measure
+        \(\nu \in \mathcal{M}(X)\) and \(g \in L^1(\nu)\) such that for all \(\mu \in M\), \(\mu \ll \nu\)
         and \(d \mu / d \nu \le g\). Then, \(M\) is strongly tight.
     </p>
 
     <p class="BodyText">
         <i>Proof.</i>
         Define \(\eta \in \mathcal{M}(X)\) by \(d \eta = \frac{g}{\|g\|_{L^1(\nu)}} d \nu\). Then, for
-        all \(\epsilon > 0\) and \(f : X \to \mathbb{R}\) bounded measurable, there exists some compact 
-        set \(K\) such that \(f\) is continuous on \(K\) and \(\eta(K^c) \le \|g\|_{L^1(\nu)}^{-1}\epsilon\). 
-        Then, for all \(\mu \in M\), we have that 
-        \[\mu(K^c) = \int_{K^c} \frac{d \mu}{d \nu} d \nu \le \int_{K^c} g d \nu 
+        all \(\epsilon > 0\) and \(f : X \to \mathbb{R}\) bounded measurable, there exists some compact
+        set \(K\) such that \(f\) is continuous on \(K\) and \(\eta(K^c) \le \|g\|_{L^1(\nu)}^{-1}\epsilon\).
+        Then, for all \(\mu \in M\), we have that
+        \[\mu(K^c) = \int_{K^c} \frac{d \mu}{d \nu} d \nu \le \int_{K^c} g d \nu
             = \|g\|_{L^1(\nu)}\eta(K^c) \le \epsilon\]
         as desired.
-    </p>    
+    </p>
 
     <p class="BodyText" style="text-align: right">🎉</p>
 
     <p class="BodyText">
-        Consequently, recall that if \((\mu_n) \subseteq \mathcal{M}(X)\) is a sequence of measures 
-        which are absolutely continuous with respect to some \(\nu \in \mathcal{M}(X)\), then \(\mu_n\) 
-        converges to \(\mu\) in total variation if and only if \(d \mu_n / d \nu \to d \mu / d \nu\) 
+        Consequently, recall that if \((\mu_n) \subseteq \mathcal{M}(X)\) is a sequence of measures
+        which are absolutely continuous with respect to some \(\nu \in \mathcal{M}(X)\), then \(\mu_n\)
+        converges to \(\mu\) in total variation if and only if \(d \mu_n / d \nu \to d \mu / d \nu\)
         in \(L^1\). Thus, the above allows us to recover the dominated convergence theorem.
     </p>
-
 
 <p class="Section" id="random-compact">
     <i>27 Oct. 2023.</i> &ensp; Random Compact Sets in Polish Spaces</p>
 
     <p class="BodyText">
         Here is a fun puzzle:
-        Let \(X\) be a polish space and \(K\) a random compact set of \(X\) (i.e. a random variable taking values 
-        in compact subsets of \(X\)). Fix \(\epsilon > 0\), does there necessarily exists a deterministic compact 
+        Let \(X\) be a polish space and \(K\) a random compact set of \(X\) (i.e. a random variable taking values
+        in compact subsets of \(X\)). Fix \(\epsilon > 0\), does there necessarily exists a deterministic compact
         set \(A\) such that \(\mathbb{P}(K \subseteq A) \ge 1 - \epsilon\)?
     </p>
 
     <p class="BodyText">
-        This question seems quite similar to the notion of <i>tightness</i> for measures and it would not 
+        This question seems quite similar to the notion of <i>tightness</i> for measures and it would not
         come as a shock that the solution to this question uses tightness of a single measure on Polish spaces.
     </p>
 
     <p class="BodyText">
         Define \(\mu\) such that
         \[\mu(B) = \mathbb{P}(K \subsetneq B),\]
-        it is not difficult to see that \(\mu\) defines a measure on \(\mathcal{B}(X)\) (note that strict subset 
+        it is not difficult to see that \(\mu\) defines a measure on \(\mathcal{B}(X)\) (note that strict subset
         is necessary as \(K\) might achieve \(\varnothing\) with positive probability).
-        Thus, as a measure on \(X\) is tight, there exists a compact set \(A\) such that 
+        Thus, as a measure on \(X\) is tight, there exists a compact set \(A\) such that
         \[\mathbb{P}(K \subseteq A) \ge \mathbb{P}(K \subsetneq A) = \mu(A) \ge 1 - \epsilon\]
         which is precisely what we needed.
     </p>
@@ -407,82 +390,82 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     <i>30 Jul. 2022.</i> &ensp; Order Connected Sets are Measurable in \(\mathbb{R}^n\)</p>
 
     <p class="BodyText">
-        Yaël Dillies was reading a book by Bollobas in which he claimed without proof that an order connected set (with respect to the pointwise ordering) 
+        Yaël Dillies was reading a book by Bollobas in which he claimed without proof that an order connected set (with respect to the pointwise ordering)
         in \(\mathbb{R}^n\) is measurable. Yaël asked on Discord if anyone knows how to prove it. This short note contains my proof of this fact.
     </p>
 
     <p class="BodyText">
         <b>Definition.</b>
-        Given a partially ordered set \((X, (\le))\), \(S \subseteq X\) is said to be order connected if for all \(x, y \in S\), 
+        Given a partially ordered set \((X, (\le))\), \(S \subseteq X\) is said to be order connected if for all \(x, y \in S\),
         \[[x, y] := \{z \mid x \le z \le y\} \subseteq S.\]
-    </p>   
+    </p>
 
     <p class="BodyText">
-        Equipping \(\mathbb{R}^n\) with the point-wise ordering (i.e. for 
-        \(x := (x_i)_{i = 1}^n,  y := (y_i)_{i = 1}^n \in \mathbb{R}^n\), \(x \le y\) if and only if 
-        \(x_n \le y_n\) for all \(n = 1, \cdots, n\)), \(\mathbb{R}^n\) form a partially ordered set and we 
+        Equipping \(\mathbb{R}^n\) with the point-wise ordering (i.e. for
+        \(x := (x_i)_{i = 1}^n,  y := (y_i)_{i = 1}^n \in \mathbb{R}^n\), \(x \le y\) if and only if
+        \(x_n \le y_n\) for all \(n = 1, \cdots, n\)), \(\mathbb{R}^n\) form a partially ordered set and we
         can therefore talk about its order connected subsets.
     </p>
 
     <p class="BodyText">
         <b>Theorem.</b>
-        \(S \subseteq \mathbb{R}^n\) is Lebesgue measurable if \(S\) is order connected with respect to the 
+        \(S \subseteq \mathbb{R}^n\) is Lebesgue measurable if \(S\) is order connected with respect to the
         point-wise ordering on \(\mathbb{R}^n\).
     </p>
-    
+
     <p class="BodyText">
         <i>Proof.</i>
-        Defining \(S^+ := \{x \mid \exists \ y \in S, y \le x\}\) and \(S^- := \{x \mid \exists \ y \in s, x \le y\}\), we 
-        observe \(S = S^+ \cap S^-\). Therefore, it is sufficient to show that \(S^+\) and \(S^-\) are measurable. 
-        We will show measurability for \(S^+\) while the case for \(S^-\) is similar. 
+        Defining \(S^+ := \{x \mid \exists \ y \in S, y \le x\}\) and \(S^- := \{x \mid \exists \ y \in s, x \le y\}\), we
+        observe \(S = S^+ \cap S^-\). Therefore, it is sufficient to show that \(S^+\) and \(S^-\) are measurable.
+        We will show measurability for \(S^+\) while the case for \(S^-\) is similar.
     </p>
 
     <p class="BodyText">
         It is clear that for all \(x \in \mathbb{R}^n\), \(\{x\}^+\) is measurable. So, defining \(Q := S^+ \cap \mathbb{Q}^n\),
         \[Q^+ = \bigcup_{q \in Q} \{q\}^+ \subseteq S^+\]
-        is measurable. Furthermore, \(S^+ \setminus Q^+ \subseteq \partial S^+\) since for all \(x \in S^\circ\), there exists some 
-        open neighborhood \(B \subseteq S^\circ\) of \(x\); so, as \(Q\) is dense in \(S^+\), there exists an element 
-        \(q \in Q \cap B\) such that \(q \le x\) and hence, \(x \in \{q\}^+ \subseteq Q^+\). Now, as the Lebesgue \(\sigma\)-algebra is 
+        is measurable. Furthermore, \(S^+ \setminus Q^+ \subseteq \partial S^+\) since for all \(x \in S^\circ\), there exists some
+        open neighborhood \(B \subseteq S^\circ\) of \(x\); so, as \(Q\) is dense in \(S^+\), there exists an element
+        \(q \in Q \cap B\) such that \(q \le x\) and hence, \(x \in \{q\}^+ \subseteq Q^+\). Now, as the Lebesgue \(\sigma\)-algebra is
         complete and \(S^+ = Q^+ \cup (S^+ \setminus Q^+)\), it suffices to show that \(\partial S^+\) is a null-set.
     </p>
 
     <p class="BodyText">
-        To show \(\text{Leb}(\partial S^+) = 0\) we will invoke the Lebesgue density theorem. Namely, by showing 
+        To show \(\text{Leb}(\partial S^+) = 0\) we will invoke the Lebesgue density theorem. Namely, by showing
         \[\partial S^+ \subseteq \{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}\]
-        where 
-        \[d(x) := \lim_{\epsilon \to 0} d_\epsilon(x) = \lim_{\epsilon \to 0} 
+        where
+        \[d(x) := \lim_{\epsilon \to 0} d_\epsilon(x) = \lim_{\epsilon \to 0}
             \frac{\text{Leb}(\overline{S^+} \cap B_\epsilon(x))}{\text{Leb}(B_\epsilon(x))}\]
-        as \(\overline{S^+}\) is closed and hence measurable, the Lebesgue density theorem tells us 
+        as \(\overline{S^+}\) is closed and hence measurable, the Lebesgue density theorem tells us
         \[\text{Leb}(\partial S^+) \le \text{Leb}(\{x \in \overline{S^+} \mid d(x) \notin \{0, 1\}\}) = 0.\]
     </p>
 
     <p class="BodyText">
-        Indeed, for all \(x \in \partial S^+, \epsilon > 0\), \(\overline{S^+} \cap B_\epsilon(x)\) must contain 
-        the with the right-upper quadrant of the ball by the very definition of \(S^+\), implying 
-        \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \gtrapprox 2^{-n} \text{Leb}(B_\epsilon(x))\) bounding 
-        \(d(x)\) from below. Similarly, \(\overline{S^+}^c \cap B_\epsilon(x)\) must contain the left-bottom 
-        quadrant of the ball as otherwise \(x\) is contained by some \(\{y\}^+\) for some \(y \in \overline{S}^+\) 
-        contradicting \(x \in \partial S^+\). Hence, \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \lessapprox 
-        (1 - 2^{-n}) \text{Leb}(B_\epsilon(x))\) bounding \(d(x)\) from above and so, proving the required 
+        Indeed, for all \(x \in \partial S^+, \epsilon > 0\), \(\overline{S^+} \cap B_\epsilon(x)\) must contain
+        the with the right-upper quadrant of the ball by the very definition of \(S^+\), implying
+        \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \gtrapprox 2^{-n} \text{Leb}(B_\epsilon(x))\) bounding
+        \(d(x)\) from below. Similarly, \(\overline{S^+}^c \cap B_\epsilon(x)\) must contain the left-bottom
+        quadrant of the ball as otherwise \(x\) is contained by some \(\{y\}^+\) for some \(y \in \overline{S}^+\)
+        contradicting \(x \in \partial S^+\). Hence, \(\text{Leb}(\overline{S^+} \cap B_\epsilon(x)) \lessapprox
+        (1 - 2^{-n}) \text{Leb}(B_\epsilon(x))\) bounding \(d(x)\) from above and so, proving the required
         inclusion.
     </p>
-    
+
     <p class="BodyText" style="text-align: right">🎉</p>
 
 <p class="Section" id="order-topology">
     <i>3 Apr. 2022.</i> &ensp; Preorder Cannot Generate the Cofinite Topology on Infinite Sets</p>
 
     <p class="BodyText">
-        Kevin Buzzard asked on Discord whether or not 
+        Kevin Buzzard asked on Discord whether or not
         the topology generated by any preorder on \(\mathbb{C}\) can equal to either the usual topology or the cofinite topology.
         The first question is rather easy and one can take the base of the usual topology to be the boxes and of which
-        is generated by the preorder 
+        is generated by the preorder
         \[z < w \iff \text{Re}(z) < \text{Re}(w) \text{ and } \text{Im}(z) < \text{Im}(w).\]
         The second part is a bit more tricky and by playing around, I found that the following is true.
     </p>
 
     <p class="BodyText">
-        <b>Theorem.</b> 
+        <b>Theorem.</b>
         Given a infinite set \(X\), there does not exist a preorder on \(X\) which generates the cofinite topology.
     </p>
 
@@ -492,13 +475,13 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
 
     <p class="BodyText">
         It is clear that every preorder has an associated strict order by setting \(x < y\) whenever \(x \le y\) and \(\neg y \le x\).
-        With this in mind, the topology generated the preorder \((\le)\) is defined to be is the smallest topology such that all sets of the 
-        form \(\{y \in X \mid y < x\}\) and \(\{y \in X \mid x < y\}\) are open for any \(x \in X\) where \((<)\) is the strict 
-        order associated with the preorder. 
+        With this in mind, the topology generated the preorder \((\le)\) is defined to be is the smallest topology such that all sets of the
+        form \(\{y \in X \mid y < x\}\) and \(\{y \in X \mid x < y\}\) are open for any \(x \in X\) where \((<)\) is the strict
+        order associated with the preorder.
     </p>
 
     <p class="BodyText">
-        On the other hand, the cofinite topology on \(X\) is the topology in which the open sets are precisely 
+        On the other hand, the cofinite topology on \(X\) is the topology in which the open sets are precisely
         the sets whose complements are finite or the empty set.
     </p>
 
@@ -508,25 +491,23 @@ abstract: Welcome to the personal website of <a href="https://people.epfl.ch/kex
     </p>
     <p class="BodyText">
         <i>Proof.</i>
-        Suppose there exists a preorder \((\le)\) with the associated strict order \((<)\) such that the order topology generated by it is the same as the cofinite 
-        topology. For the cofinite topology, any non-empty open sets must intersect, and thus, since \(\{z \mid x < z\}\) and 
-        \(\{z \mid z < x\}\) are open in the order topology, their intersection is nonempty for all \(x\) if neither sets are empty. 
-        But, if this is the case, there exists some \(z\) such that \(z < x < z\) implying \(z < z\) which is a contradiction. 
+        Suppose there exists a preorder \((\le)\) with the associated strict order \((<)\) such that the order topology generated by it is the same as the cofinite
+        topology. For the cofinite topology, any non-empty open sets must intersect, and thus, since \(\{z \mid x < z\}\) and
+        \(\{z \mid z < x\}\) are open in the order topology, their intersection is nonempty for all \(x\) if neither sets are empty.
+        But, if this is the case, there exists some \(z\) such that \(z < x < z\) implying \(z < z\) which is a contradiction.
         Hence, at least one of the set is empty.
     </p>
-        
-    <p class="BodyText">
-        Now, denoting \(U_+\) the set of \(x\) for which \(\{z \mid z < x\}\) is non-empty (so \(\{z \mid x < z\} = \varnothing\) for all \(x \in U_+\)), as 
-        \(\{z \mid z < x\}\) is open, \(\{z \mid \neg z < x\}\) is finite for all \(x \in U_+\). As for all \(x, y \in U_+\), if \(y < x\), 
-        then \(x \in \{z \mid y < z\}\) contradicting \(\{z \mid y < z\} = \varnothing\), \(\neg y < x\) for all \(x, y \in U_+\). Hence, 
-        \(y \in \{z \mid \neg z < x\}\) for all \(y \in U_+\). Thus, as \(\{z \mid \neg z < x\}\) is finite, so is \(U_+\). 
-    </p>   
 
     <p class="BodyText">
-        Similarly, defining \(U_-\) the set of \(x\) for which \(\{z \mid x < z\}\) is non-empty, by the same argument, \(U_-\) is finite. 
-        Hence, \(\{z \mid x < z\}\) and \(\{z \mid z < x\}\) is empty for all but finitely many \(x\). But then, the topology generated by 
+        Now, denoting \(U_+\) the set of \(x\) for which \(\{z \mid z < x\}\) is non-empty (so \(\{z \mid x < z\} = \varnothing\) for all \(x \in U_+\)), as
+        \(\{z \mid z < x\}\) is open, \(\{z \mid \neg z < x\}\) is finite for all \(x \in U_+\). As for all \(x, y \in U_+\), if \(y < x\),
+        then \(x \in \{z \mid y < z\}\) contradicting \(\{z \mid y < z\} = \varnothing\), \(\neg y < x\) for all \(x, y \in U_+\). Hence,
+        \(y \in \{z \mid \neg z < x\}\) for all \(y \in U_+\). Thus, as \(\{z \mid \neg z < x\}\) is finite, so is \(U_+\).
+    </p>
+
+    <p class="BodyText">
+        Similarly, defining \(U_-\) the set of \(x\) for which \(\{z \mid x < z\}\) is non-empty, by the same argument, \(U_-\) is finite.
+        Hence, \(\{z \mid x < z\}\) and \(\{z \mid z < x\}\) is empty for all but finitely many \(x\). But then, the topology generated by
         the preorder has a finite base, implying only finitely many sets are open which is a contradiction.
     </p>
     <p class="BodyText" style="text-align: right">🎉</p>
-
-        
