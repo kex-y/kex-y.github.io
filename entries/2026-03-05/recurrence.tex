@@ -30,15 +30,15 @@ found a clever proof of this the sketch of which I would like to share here.
 
   Let us define the following continuous time random walk \(X_t\) on \(\mathbb{Z}\): 
   Defining \(\tau_0 = 0\)
-  \[\tau_{n + 1} := \inf\{t > \tau_n : |B_t| \in 2^{\mathbb{Z}}\}\]
+  \[\tau_{n + 1} := \inf\{t > \tau_n : |B_t| \in 2^{\mathbb{Z}} \setminus \{|B_{\tau_n}|\}\}\]
   we set \(X_t = \log_2 |B_{\tau_n}|\) whenever \(t \in [\tau_n, \tau_{n + 1})\). Namely, 
   \(X_t\) is the continuous time random walk which moves to \(n\) whenever the Brownian motion 
   hits the circle of radius \(2^n\). Thus, as hitting the \(\epsilon\)-ball centered at the origin 
   corresponds to \(X_t\) hitting \(n\) for any \(n \in \mathbb{Z}\) satisfying \(2^n < \epsilon\), 
-  it follows that the conclusion holds if we can show that \(X_t\) is symmetric (and so, is transient). 
+  it follows that the conclusion holds if we can show that \(X_t\) is symmetric (and so, is recurrent). 
 
   Straightaway, by scaling invariance and the strong Markov property, it suffices to show that 
-  \[\mathbb{P}(X_1 = 0) = \mathbb{P}(X_1 = 2) = \frac{1}{2}.\]
+  \[\mathbb{P}(X_{\tau_1} = 0) = \mathbb{P}(X_{\tau_1} = 2) = \frac{1}{2}.\]
   Namely, we need to show that \(B_t\) hits the circle of radius \(1/2\) before the circle of 
   radius \(2\) with probability \(1/2\).
   However, this is clear as, the map 
